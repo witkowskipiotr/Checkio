@@ -4,6 +4,7 @@ def checkio(nums: list):
     """
     sums even-indexes elements and multiply at the last
     """
+
     if not all(isinstance(num, int) for num in nums):
         return
     elif not nums:
