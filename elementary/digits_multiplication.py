@@ -18,4 +18,3 @@ def digits_multiplication(number: int) -> int:
     for chunk in divided_number_to_string:
         result *= int(chunk)
     return result
-
