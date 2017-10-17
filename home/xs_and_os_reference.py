@@ -5,8 +5,8 @@ https://py.checkio.org/mission/x-o-referee/
 """
 
 
-def check_slant(data: list) -> str:
-    """Check if slant is solved"""
+def check_diagonally(data: list) -> str:
+    """Check if diagonally is solved"""
     if data[0][0] == data[1][1] == data[2][2] != "." or\
             data[2][0] == data[1][1] == data[0][2] != ".":
         return data[1][1]
@@ -40,8 +40,8 @@ def xs_and_os_reference(data: list) -> str:
     :param data: A game result as a list of strings
     :return: "X", "O" or "D" as a string
     """
-    if check_slant(data) != ".":
-        return check_slant(data)
+    if check_diagonally(data) != ".":
+        return check_diagonally(data)
     if check_horizontal(data) != ".":
         return check_horizontal(data)
     if check_vertical(data) != ".":

@@ -6,11 +6,11 @@ class CheckioTest(unittest.TestCase):
 
     def test_check_slant_equal(self):
         # NW-SE and NE-SW slant win
-        self.assertEqual(check_slant(["X.O", "XX.", "XOX"]), "X")
-        self.assertEqual(check_slant(["XOX", "XXO", "..X"]), "X")
+        self.assertEqual(check_diagonally(["X.O", "XX.", "XOX"]), "X")
+        self.assertEqual(check_diagonally(["XOX", "XXO", "..X"]), "X")
         # NW-SE and NE-SW slant draw
-        self.assertEqual(check_slant(["OO.", "XOX", "XOX"]), ".")
-        self.assertEqual(check_slant(["OOX", "XXO", "..X"]), ".")
+        self.assertEqual(check_diagonally(["OO.", "XOX", "XOX"]), ".")
+        self.assertEqual(check_diagonally(["OOX", "XXO", "..X"]), ".")
 
     def test_check_vertical_equal(self):
         self.assertEqual(check_vertical(["X.O", "XX.", "XOO"]), "X")
