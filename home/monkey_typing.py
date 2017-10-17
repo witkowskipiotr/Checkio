@@ -13,6 +13,10 @@ def monkey_typing(text: str, words: set) -> int:
     in the text, it should be counted only once.
     :return: The number of words in the text as an integer.
     """
+    # simple solution
+    # counter = [chunk for chunk in words if chunk in text.lower()]
+
+    # my solution
     text_split = text.lower().split(" ")
     if not all(len(w) >= 3 and w.islower() and w.isalpha for w in words):
         return 0
@@ -23,6 +27,5 @@ def monkey_typing(text: str, words: set) -> int:
         for word in words_to_count:
             if word.lower() in text_chunk and word.lower() not in eliminated:
                 score += 1
-                print(word)
                 eliminated.append(word)
     return score
