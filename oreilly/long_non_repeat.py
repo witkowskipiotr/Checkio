@@ -4,21 +4,21 @@ Home functions from
 https://py.checkio.org/mission/long-non-repeat/
 """
 
-#TODO not finished
 
 def non_repeat(text: str) -> str:
+    """
+        the longest substring without repeating chars
+    """
     result_win = ''
     result_text = ''
-    result_count = 0
     for char in text:
         if char in result_text:
-            result_text = char
+            for i in range(len(result_text)):
+                if char == result_text[i]:
+                    result_text = result_text[1 + i:] + char
+                    break
         else:
             result_text += char
-        if len(result_text) > result_count:
+        if len(result_win) < len(result_text):
             result_win = result_text
-    return result_count
-
-print(non_repeat('aaaaa') == 'a')
-print(non_repeat('abdjwawk') == 'abdjw')
-print(non_repeat('abcabcffab') == 'abcf')
+    return result_win
