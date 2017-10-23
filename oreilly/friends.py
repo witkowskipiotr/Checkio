@@ -42,5 +42,6 @@ class Friends:
         """
         checks the connection for the item
         """
-        name = set([c for conn in self.__frends for c in conn if c != name_connected and name_connected in conn])
-        return name
+        name = [c for conn in self.__frends
+                for c in conn if c != name_connected and name_connected in conn]
+        return set(name)

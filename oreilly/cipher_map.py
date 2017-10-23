@@ -31,7 +31,9 @@ def recall_ciphered_password(cipher_grille: tuple, ciphered_password: tuple) -> 
     return decode text
     """
     text = ""
-    for num in range(4):
+    num = 0
+    while num < 4:
         text += decode_part_text(cipher_grille, ciphered_password)
         cipher_grille = rotate_tuple_90(cipher_grille)
+        num += 1
     return text
