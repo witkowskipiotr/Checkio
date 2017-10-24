@@ -6,9 +6,10 @@ https://py.checkio.org/mission/brackets/
 
 def checkio(expression):
     """
-
-    :param expression:
-    :return:
+    :param expression: An expression with different of types
+    brackets as a string (unicode)
+    :return: A verdict on the correctness of the expression
+    in boolean (True or False).
     """
     level = []
     for char in expression:
