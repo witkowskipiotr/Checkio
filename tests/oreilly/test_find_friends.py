@@ -2,6 +2,7 @@ import unittest
 
 from oreilly.find_friends import check_connection
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_check_connection_equal(self):
