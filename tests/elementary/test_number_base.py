@@ -2,6 +2,7 @@ import unittest
 
 from elementary.number_base import number_base
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_number_base_not_equal(self):

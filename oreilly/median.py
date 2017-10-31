@@ -5,7 +5,7 @@ https://py.checkio.org/mission/median/
 """
 
 
-def median(numbers: list) -> float:
+def median_set_of_numbers(numbers: list) -> float:
     """
     A median is a numerical value separating the upper half of a sorted array
     of numbers from the lower half. In a list where there are an odd number of entities,

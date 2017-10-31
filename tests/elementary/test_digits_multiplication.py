@@ -2,6 +2,7 @@ import unittest
 
 from elementary.digits_multiplication import digits_multiplication
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_index_power_not_equal(self):

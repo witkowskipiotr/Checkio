@@ -3,6 +3,7 @@ import unittest
 from home.min_and_max import min as min_val
 from home.min_and_max import max as max_val
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_min_value_equal(self):

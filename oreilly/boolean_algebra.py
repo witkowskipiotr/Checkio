@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Home functions from
+Oreilly functions from
 https://py.checkio.org/mission/boolean-algebra/
+A mathematical function "boolean" that returns a boolean value
 """
 
 

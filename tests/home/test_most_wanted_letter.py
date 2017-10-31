@@ -2,6 +2,7 @@ import unittest
 
 from home.most_wanted_letter import most_wanted_letter
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_most_wanted_letter_not_equal(self):

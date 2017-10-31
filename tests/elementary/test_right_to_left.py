@@ -2,6 +2,7 @@ import unittest
 
 from elementary.right_to_left import right_to_left
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_index_power_not_equal(self):

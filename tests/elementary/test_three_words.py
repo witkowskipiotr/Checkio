@@ -2,6 +2,7 @@ import unittest
 
 from elementary.three_words import three_words
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_three_words_not_equal(self):
@@ -16,5 +17,5 @@ class CheckioTest(unittest.TestCase):
         self.assertTrue(three_words("1 2 3 4 df sdf sd 3 "))
 
     def test_three_words_raise(self):
-        self.assertRaises(TypeError,three_words)
-        self.assertRaises(AttributeError,three_words,[1])
+        self.assertRaises(TypeError, three_words)
+        self.assertRaises(AttributeError, three_words, [1])

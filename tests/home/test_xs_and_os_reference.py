@@ -2,6 +2,7 @@ import unittest
 
 from home.xs_and_os_reference import *
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_check_slant_equal(self):

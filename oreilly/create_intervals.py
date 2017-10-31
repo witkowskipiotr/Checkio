@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Home functions from
+O'Reilly functions from
 https://py.checkio.org/mission/create-intervals/
 """
 
 
-def create_intervals(var: set) -> list:
+def get_sets_of_unbroken_numbers(var: set) -> list:
     """
-        Create a list of intervals out of set of ints.
+    Create a list of intervals out of set of ints.
     """
     if not var:
         return []

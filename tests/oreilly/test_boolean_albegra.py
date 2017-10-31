@@ -5,7 +5,7 @@ from oreilly.boolean_algebra import *
 
 class CheckioTest(unittest.TestCase):
     def setUp(self):
-        self.operations = ("conjunction","disjunction","implication","exclusive","equivalence")
+        self.operations = ("conjunction", "disjunction", "implication", "exclusive", "equivalence")
         self.data = [[0, 0],
                      [0, 1],
                      [1, 0],

@@ -3,6 +3,7 @@ import unittest
 
 from elementary.secret_message import find_message
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_find_message_not_equal(self):

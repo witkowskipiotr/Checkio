@@ -2,6 +2,7 @@ import unittest
 
 from oreilly.days_between import number_days_between_date
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_diff_days_equal(self):

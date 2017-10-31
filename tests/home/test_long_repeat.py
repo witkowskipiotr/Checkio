@@ -2,6 +2,7 @@ import unittest
 
 from home.long_repeat import long_repeat
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_long_repeat_equal(self):

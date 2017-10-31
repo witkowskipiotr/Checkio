@@ -2,6 +2,7 @@ import unittest
 
 from home.house_password import house_password
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_house_password_not_equal(self):

@@ -1,6 +1,6 @@
 import unittest
 
-from oreilly.cipher_map import decode_part_text, rotate_tuple_90, recall_ciphered_password
+from oreilly.cipher_map import decode_part_text, rotate_tuple_90_degrees, recall_ciphered_password
 
 
 class CheckioTest(unittest.TestCase):
@@ -33,4 +33,4 @@ class CheckioTest(unittest.TestCase):
 
     def test_rotate_tuple_90_equal(self):
         for i, data in enumerate(self.data):
-            self.assertEqual(rotate_tuple_90(data[0]), self.rotate_90[i])
+            self.assertEqual(rotate_tuple_90_degrees(data[0]), self.rotate_90[i])

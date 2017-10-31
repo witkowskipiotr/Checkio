@@ -2,6 +2,7 @@ import unittest
 
 from oreilly.long_non_repeat import non_repeat
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_median_function_equal(self):

@@ -2,6 +2,7 @@ import unittest
 
 from home.pawn_brotherhood import *
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_find_key_equal(self):

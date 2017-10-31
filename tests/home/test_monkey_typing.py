@@ -2,6 +2,7 @@ import unittest
 
 from home.monkey_typing import monkey_typing
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_monkey_typing_not_equal(self):

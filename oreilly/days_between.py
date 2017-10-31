@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Home functions from
+O'Reilly functions from
 https://py.checkio.org/mission/days-diff/
 """
 
 from datetime import date
+
 
 def number_days_between_date(date1: tuple, date2: tuple) -> int:
     """

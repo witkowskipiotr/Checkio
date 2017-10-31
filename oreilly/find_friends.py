@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-O'Reilyy functions from
+O'Reilly functions from
 https://py.checkio.org/mission/find-friends/
 """
 

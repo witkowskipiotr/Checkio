@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Home functions from
+O'Reilly functions from
 https://py.checkio.org/mission/friends/
 """
 
@@ -18,19 +18,19 @@ class Friends:
     def check_connection(self, connection):
         return True if connection in self.__frends else False
 
-    def add(self, connection: set) -> bool:
+    def add_connection(self, connection: set) -> bool:
         is_in_connection = self.check_connection(connection)
         if not is_in_connection:
             self.__frends.append(connection)
         return not is_in_connection
 
-    def remove(self, connection: set) -> bool:
+    def remove_connection(self, connection: set) -> bool:
         is_in_connection = self.check_connection(connection)
         if is_in_connection:
             self.__frends.remove(connection)
         return is_in_connection
 
-    def names(self) -> set:
+    def names_of_all_connection(self) -> set:
         """
         :return: all elements as a list
         """

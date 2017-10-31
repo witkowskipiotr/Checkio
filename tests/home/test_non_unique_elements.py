@@ -2,6 +2,7 @@ import unittest
 
 from home.non_unique_elements import non_unique_elements
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_non_unique_elements_not_equal(self):

@@ -2,6 +2,7 @@ import unittest
 
 from elementary.absolute_sorting import absolute_sorting
 
+
 class CheckioTest(unittest.TestCase):
 
     def test_absolute_sorting_not_equal(self):
