@@ -1,6 +1,6 @@
 import unittest
 
-from oreilly.find_friends import check_connection
+from oreilly.find_friends import check_connection_between_users
 
 
 class CheckioTest(unittest.TestCase):
@@ -25,4 +25,7 @@ class CheckioTest(unittest.TestCase):
         self.result_check_connection = [True, False, False, True]
 
         for i, (network, first, second) in enumerate(self.data):
-            self.assertEqual(check_connection(network, first, second), self.result_check_connection[i])
+            self.assertEqual(check_connection_between_users(network=network,
+                                                            first_user=first,
+                                                            second_user=second),
+                             self.result_check_connection[i])

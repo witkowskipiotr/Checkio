@@ -7,6 +7,8 @@ https://py.checkio.org/mission/brackets/
 
 def checkio(expression):
     """
+    function  chcecks if brackets in expresion are closedd correctly
+
     :param expression: An expression with different of types
     brackets as a string (unicode)
     :return: A verdict on the correctness of the expression

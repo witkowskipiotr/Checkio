@@ -7,15 +7,19 @@ https://py.checkio.org/mission/long-non-repeat/
 
 def non_repeat(text: str) -> str:
     """
-        the longest substring without repeating chars
+    The function return the longest string on variable text,
+    in which the same characters are not repeated
+    'aaaaaa' -> 'a'
+    'abdjwawk' -> 'abdjw'
+    'abcabcffab' -> 'abcf'
     """
     result_win = ''
     result_text = ''
     for char in text:
         if char in result_text:
-            for i in range(len(result_text)):
-                if char == result_text[i]:
-                    result_text = result_text[1 + i:] + char
+            for iterable in range(len(result_text)):
+                if char == result_text[iterable]:
+                    result_text = result_text[1 + iterable:] + char
                     break
         else:
             result_text += char

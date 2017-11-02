@@ -43,21 +43,22 @@ def equivalence(bool_a: bool, bool_b: bool) -> bool:
 
 def boolean(bool_a: bool, bool_b: bool, operation: str) -> bool:
     """
-    :param bool_a, bool_b: logical value 0 or 1
-    :param operation:
-    - "conjunction" denoted x ∧ y
-    - "disjunction" denoted x ∨ y
-    - "implication" (material implication) denoted x→y and can be described as ¬ x ∨ y
-    - "exclusive" (exclusive or) denoted x ⊕ y and can be described as (x ∨ y)∧ ¬ (x ∧ y)
-    - "equivalence" denoted x ≡ y and can be described as ¬ (x ⊕ y)
-     x | y | x∧y | x∨y | x→y | x⊕y | x≡y |
-    --------------------------------------
-     0 | 0 |  0  |  0  |  1  |  0  |  1  |
-     1 | 0 |  0  |  1  |  0  |  1  |  0  |
-     0 | 1 |  0  |  1  |  1  |  1  |  0  |
-     1 | 1 |  1  |  1  |  1  |  0  |  1  |
-    --------------------------------------
-    :return: logical value after operation: 0 or 1
+    Args:
+        bool_a, bool_b: logical value 0 or 1
+        operation:
+            - "conjunction" denoted x ∧ y
+            - "disjunction" denoted x ∨ y
+            - "implication" (material implication) denoted x→y and can be described as ¬ x ∨ y
+            - "exclusive" (exclusive or) denoted x ⊕ y and can be described as (x ∨ y)∧ ¬ (x ∧ y)
+            - "equivalence" denoted x ≡ y and can be described as ¬ (x ⊕ y)
+             x | y | x∧y | x∨y | x→y | x⊕y | x≡y |
+            --------------------------------------
+             0 | 0 |  0  |  0  |  1  |  0  |  1  |
+             1 | 0 |  0  |  1  |  0  |  1  |  0  |
+             0 | 1 |  0  |  1  |  1  |  1  |  0  |
+             1 | 1 |  1  |  1  |  1  |  0  |  1  |
+            --------------------------------------
+    return: logical value after operation: 0 or 1
     """
     function = [
         ["conjunction", conjunction(bool_a, bool_b)],
