@@ -6,7 +6,7 @@ O'Reilly functions from https://py.checkio.org/mission/friends/
 
 class Friends:
     """
-    Returns a new Friends instance. "connections" is an iterable of sets with two elements in each.
+    class is responsobile for keeping relations between friends.
     Each connection contains two names as strings. Connections can be repeated in the initial data,
     but inside it's stored once. Each connection has only two states - existing or not.
     """

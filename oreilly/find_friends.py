@@ -6,7 +6,7 @@ https://py.checkio.org/mission/find-friends/
 import ipdb
 
 
-def find_path(graph, start, end, path=[]):
+def find_path(graph, start, end, path):
     """
     Takes a graph and the start and end nodes as arguments. It will return a list of nodes
     (including the start and end nodes) comprising the path. When no path can be found,
@@ -43,10 +43,10 @@ def check_connection_between_users(network: tuple, first_user: str, second_user:
         True if connection is possible
     example network:
         check_connection(
-            ("dr101-mr99", "mr99-out00", "dr101-out00", "scout1-scout2",
+            network=("dr101-mr99", "mr99-out00", "dr101-out00", "scout1-scout2",
              "scout3-scout1", "scout1-scout4", "scout4-sscout", "sscout-super"),
-             "scout2",
-             "scout3") -> True
+             first_user="scout2",
+             second_user="scout3") -> True
         check_connection(
             ("dr101-mr99", "mr99-out00", "dr101-out00", "scout1-scout2",
              "scout3-scout1", "scout1-scout4", "scout4-sscout", "sscout-super"),

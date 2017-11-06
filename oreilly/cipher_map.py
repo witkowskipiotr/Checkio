@@ -48,6 +48,10 @@ def recall_ciphered_password(encrypted_data: tuple, ciphered_password: tuple) ->
     Main method in module
     We receive an encrypted message as a 4x4 tuple
     and decryption key in the same size 4x4 tuple.
+    I. we Make 4 turns:
+        1. decode part text
+        2. rotate
+    II. reutrn
     Rotate encrypted_data by 90 degrees and read again. After completing 3 turns,
     return message with connection 4-element decode string
     for example:

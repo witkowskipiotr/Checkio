@@ -6,6 +6,8 @@ from code_wars.longest_consec import longest_consec
 class LongestConSecTest(unittest.TestCase):
 
     def test_main(self):
+
+        # test case
         self.assertEqual(longest_consec(
             str_arr=["zone", "abigail", "theta", "form", "libe", "zas"], number_to_connect=2),
             "abigailtheta")
