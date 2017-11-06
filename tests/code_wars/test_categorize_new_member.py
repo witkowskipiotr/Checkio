@@ -19,4 +19,3 @@ class LongestConSecTest(unittest.TestCase):
         self.assertEqual(check_categorize(old=54, handicap=8), 'Open')
         self.assertEqual(check_categorize(old=55, handicap=7), 'Open')
         self.assertEqual(check_categorize(old=55, handicap=8), 'Senior')
-        self.assertEqual(check_categorize(old=55, handicap=-8), 'Senior')

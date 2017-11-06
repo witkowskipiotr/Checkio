@@ -3,7 +3,6 @@
 O'Reilly functions from
 https://py.checkio.org/mission/find-friends/
 """
-import ipdb
 
 
 def find_path(graph, start, end, path):
@@ -53,7 +52,6 @@ def check_connection_between_users(network: tuple, first_user: str, second_user:
              "dr101",
              "sscout") -> False
     """
-    ipdb.set_trace()
     graph = {}
     for node in network:
         user_1, user_2 = node.split('-')
@@ -71,15 +69,5 @@ def check_connection_between_users(network: tuple, first_user: str, second_user:
                 user_1_help = user_1
                 user_1 = user_2
                 user_2 = user_1_help
-    result = find_path(graph=graph, start=first_user, end=second_user)
+    result = find_path(graph=graph, start=first_user, end=second_user, path=[])
     return True if result else False
-
-
-print(check_connection_between_users(
-    ("dr101-mr99", "mr99-out00", "dr101-out00", "scout1-scout2",
-     "scout3-scout1", "scout1-scout4", "scout4-sscout", "sscout-super"),
-    "scout2", "scout3"))
-print(check_connection_between_users(
-    ("dr101-mr99", "mr99-out00", "dr101-out00", "scout1-scout2",
-     "scout3-scout1", "scout1-scout4", "scout4-sscout", "sscout-super"),
-    "dr101", "sscout") )
