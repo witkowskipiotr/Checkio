@@ -39,4 +39,5 @@ def to_camel_case(*, text: str) -> str:
         changelings_camel_case(text='a-b_c', sign='-') -> 'aBC'
     """
     result = changelings_camel_case(text=text, sign='-')
-    return changelings_camel_case(text=result, sign='_')
+    result = changelings_camel_case(text=result, sign='_')
+    return result

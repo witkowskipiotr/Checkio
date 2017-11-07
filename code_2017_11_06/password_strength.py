@@ -6,6 +6,7 @@ New module with one function to check strength password
 
 import re
 
+
 def validate_password(*, password: str) -> bool:
     """
     The password will be considered strong enough if its length is greater

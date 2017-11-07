@@ -14,8 +14,11 @@ def split_strings_to_two_char(*, text: str) -> list:
         split_strings_to_two_char('abc') -> ['ab', 'c_']
         split_strings_to_two_char('abcdef') -> ['ab', 'cd', 'ef']
     """
-    if len(text) % 2 == 1:
+    lenght_text_is_not_even = len(text) % 2 == 1
+
+    if lenght_text_is_not_even:
         text += '_'
+
     result = []
     for iterable in range(len(text)//2):
         result.append(text[iterable * 2: iterable * 2 + 2])

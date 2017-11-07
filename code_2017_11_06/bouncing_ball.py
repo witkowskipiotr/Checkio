@@ -18,14 +18,23 @@ def bouncing_ball(*, hight: float, bounce: float, window: float) -> int:
     Return: How many times will the mother see the ball either
             falling or bouncing in front of the window.
     For example:
-        bouncing_ball(3, 0.66, 1.5) -> 3
+        bouncing_ball(hight=3, bounce=0.66, 1.5) -> 3
         bouncing_ball(30, 0.66, 1.5) -> 15
     """
-    if hight <= 0 or hight <= window:
-        return -1
-    if bounce >= 1 or bounce <= 0:
+    def validate_data():
+
+        """function responsible for checking data correction from funciton boucing ball"""
+        height_is_less_than_window = hight <= 0 or hight <= window
+        bounce_factor_is_not_correct = bounce >= 1 or bounce <= 0
+        if height_is_less_than_window or bounce_factor_is_not_correct:
+            return True
+
+    # 1. check if values are correct
+    errors = validate_data()
+    if errors:
         return -1
 
+    # 2. calculate bounces when mother can see ball
     result = 0
     while True:
         if hight <= window:
