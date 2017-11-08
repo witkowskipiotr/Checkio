@@ -8,7 +8,6 @@ def fizz_buzz(number: int) -> str:
     "Buzz" if the number is divisible by 5;
     The number as a string for other cases.
     """
-    print(number % 3, number % 5)
     if number <= 0 or number > 1000:
         return ""
     if number % 3 == 0 and number % 5 == 0:
