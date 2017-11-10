@@ -1,0 +1,7 @@
+{
+  "tests/test_omaha.py::DeckTest": true,
+  "tests/test_omaha.py::DeckTest::test_add_person": true,
+  "tests/test_omaha.py::GameTest": true,
+  "tests/test_omaha.py::PersonTest": true,
+  "tests/test_omaha.py::TableTest": true
+}
