@@ -1,4 +1,4 @@
-from models.People.Player import Player
+from models.people.player import Player
 from random import shuffle
 
 

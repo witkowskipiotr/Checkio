@@ -1,10 +1,10 @@
 from random import shuffle
 
-from models.Table import Table
-from models.Game import Game
-from models.People.Croupier import Croupier
-from models.People.PlayerNormal import PlayerNormal
-from models.People.PlayerRandomEnd import PlayerRandomEnd
+from models.table import Table
+from models.game import Game
+from models.people.croupier import Croupier
+from models.people.player_normal import PlayerNormal
+from models.people.player_random_end import PlayerRandomEnd
 
 
 class Casino:

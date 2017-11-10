@@ -1,5 +1,5 @@
-from models.People.Person import Person
-from models.Deck import Deck
+from models.people.person import Person
+from models.deck import Deck
 from random import shuffle
 
 

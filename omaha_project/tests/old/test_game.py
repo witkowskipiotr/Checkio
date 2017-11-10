@@ -1,6 +1,6 @@
 import unittest
 
-from models.Casino import Casino
+from models.casino import Casino
 
 
 class GameTest(unittest.TestCase):

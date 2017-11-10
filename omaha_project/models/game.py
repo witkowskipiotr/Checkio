@@ -2,9 +2,9 @@
 Game Omaha Game
 defined in https://en.wikipedia.org/wiki/Omaha_hold_%27em
 """
-from models.Deck import Deck
-from models.Table import Table
-from models.People.Croupier import Croupier
+from models.deck import Deck
+from models.table import Table
+from models.people.croupier import Croupier
 
 
 class Game:

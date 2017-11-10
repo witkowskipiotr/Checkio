@@ -1,4 +1,4 @@
-from models import Table
+from models import table
 
 class Player:
     """
@@ -15,18 +15,18 @@ class Player:
         self.game = []
         self.actual_table = None
 
-    def log_in_table(self, *, table: Table) -> bool:
+    def log_in_table(self, *, table: table) -> bool:
         """If person return to the table where is login"""
         if self in table.person_at_the_table:
             self.actual_table = table
             return True
 
-    def join_the_table(self, *, table: Table):
+    def join_the_table(self, *, table: table):
         """One person can be only by one table"""
         if table._person_join_to_the_table(person=self):
             self.actual_table = table
 
-    def out_the_table(self, *, table: Table):
+    def out_the_table(self, *, table: table):
         """One person can be only by one table"""
         if self in table.person_at_the_table:
             table.person_at_the_table.remove(self)

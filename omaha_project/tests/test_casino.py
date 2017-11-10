@@ -1,6 +1,6 @@
 import unittest
 
-from models.Casino import Casino
+from models.casino import Casino
 
 
 class CasinoTest(unittest.TestCase):
@@ -44,7 +44,6 @@ class CasinoTest(unittest.TestCase):
 
             # first step
             self.game.preflop_round()
-
             win = self.game.flop_round()
             if win and isinstance(win, bool):
                 win = self.game.turn_round()
@@ -55,15 +54,6 @@ class CasinoTest(unittest.TestCase):
 
             print(win.name)
             print(win.surname)
-
-
-
-
-
-
-
-
-
 
         print(self.casino.players)
         print(self.casino.croupier)
