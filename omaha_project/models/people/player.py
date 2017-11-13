@@ -7,6 +7,7 @@ class Player(Person):
         self.money = round(money, 2)
         self.amount_win = 0
         self.amount_lose = 0
+        self.actual_table = None
 
     def add_money(self, *, money: float):
         """When person win money or get from bank, his wallet up"""

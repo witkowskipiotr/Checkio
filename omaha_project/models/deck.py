@@ -1,9 +1,11 @@
+"""
+Class deck
+"""
 class Deck:
     """
     a class of playing cards
     """
     def __init__(self):
-
         self.combination_of_cards = []
         self.colors = {'trefl': 1, '  pik': 2, ' karo': 3, ' kier': 4}
         self.numbers = {'2': 0, '3': 1, '4': 2, '5': 3,
@@ -14,7 +16,7 @@ class Deck:
 
     def get_new_deck(self):
         """
-        new deck
+        new unsorted deck of cards
         """
         for color in self.colors:
             for number in self.numbers:

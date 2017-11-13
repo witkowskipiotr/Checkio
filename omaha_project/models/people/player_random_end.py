@@ -10,6 +10,6 @@ class PlayerRandomEnd(Player):
         1,2,3,... - step when finish
         """
         super().__init__(name=name, surname=surname, money=money)
-        step = [0, 1, 2, 3, 4]
+        step = [0, 2, 3, 4]
         shuffle(step)
         self.when_finish_game = step[0]

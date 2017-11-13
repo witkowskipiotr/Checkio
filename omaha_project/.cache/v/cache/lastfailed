@@ -1,4 +1,9 @@
 {
+  "tests/old/test_deck.py": true,
+  "tests/old/test_player.py": true,
+  "tests/old/test_table.py": true,
+  "tests/test_casino.py::CasinoTest::test_check_players": true,
+  "tests/test_game.py::GameTest::test_not_create_game": true,
   "tests/test_omaha.py::DeckTest": true,
   "tests/test_omaha.py::DeckTest::test_add_person": true,
   "tests/test_omaha.py::GameTest": true,
