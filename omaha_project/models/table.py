@@ -7,7 +7,10 @@ class Table:
         casino: class casino where is the table
         name: string of name - id table
     Example:
-        table = Table(casino, 'Green')
+        mike -> player class
+        table = Table(casino=casino, name='Green', max_number_of_players=3)
+        table.join_to_the_table(player=mike)
+        table.disconnect_by_table(player=mike)
     """
     def __init__(self, *, casino, name: str, max_number_of_players: int):
 

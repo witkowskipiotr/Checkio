@@ -4,6 +4,9 @@ Class deck
 class Deck:
     """
     a class of playing cards
+    Example call:
+        deck = Deck
+        deck.get_new_deck()
     """
     def __init__(self):
         self.combination_of_cards = []

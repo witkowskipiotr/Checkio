@@ -1,6 +1,7 @@
 """
 casino include many people, tables and game
 """
+
 from random import shuffle
 
 from models.table import Table
@@ -11,7 +12,24 @@ from models.people.player_random_end import PlayerRandomEnd
 
 
 class Casino:
-    """casino include many people, tables and game"""
+    """casino include many people, tables and game
+    ::
+        Example call
+            casino = Casino(name='Royal Casino', adress='Warszawska 1, Warszawa')
+            gregor = casino.add_croupier(name='Grzegorz',
+                                         surname='Brzęczyszczykiewicz',
+                                         shuffle_last=True)
+            mike = casino.add_player(name='Michał', surname='Nowak',
+                                     money=10, type_player='random')
+            peter = casino.add_player(name='Piotr', surname='Witkowski',
+                                      money=100.52, type_player='random')
+            table_green = casino.add_table(name='Green', max_number_of_players=3)
+            casino.add_player_to_table(name_table='Green', player=mike)
+            casino.add_player_to_table(name_table='Green', player=peter)
+            game = casino.create_game_omaha(table_name='Green', croupier=gregor,
+                                                 money_min_to_connect=1)
+        The game plays in game
+        """
     def __init__(self, *, name: str, adress: str):
         self.name = name
         self.adress = adress
