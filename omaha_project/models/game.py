@@ -28,8 +28,8 @@ class Game:
                      'Full': 4, 'Flush': 5, 'Straight': 6, 'Three': 7,
                      'Two Pairs': 8, 'A Pair': 9, 'None': 20}
 
-    def check_if_can_create_game(self) -> bool:
-        """Check if you can create a game"""
+    def check_if_can_start_game(self) -> bool:
+        """Check if you can start a game"""
         # if player have money then add to game
         for player in self.game_players:
             if player.check_money(money=self.money_min_to_connect) \

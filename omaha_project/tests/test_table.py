@@ -20,17 +20,15 @@ class TableTest(unittest.TestCase):
                                             money=100.52, type_player='random')
 
     def test_create_table(self):
-
         self.table_green = Table(casino=self.casino, name='Green', max_number_of_players=4)
         self.assertEqual(self.table_green.casino, self.casino)
         self.assertEqual(self.table_green.name, 'Green')
         self.assertEqual(self.table_green.max_number_of_players, 4)
         self.assertEqual(len(self.table_green.person_at_the_table), 0)
 
-    def test_join_croupier_to_the_table(self):
+    def test_not_join_croupier_to_the_table(self):
         # nobody is by the table
         self.table_green = Table(casino=self.casino, name='Green', max_number_of_players=4)
-
         self.assertEqual(len(self.table_green.person_at_the_table), 0)
         # croupier not join to the table because he is empolyee
         self.table_green.join_to_the_table(player=self.croupier)
@@ -39,7 +37,6 @@ class TableTest(unittest.TestCase):
         self.assertEqual(len(self.table_green.person_at_the_table), 0)
 
     def test_join_to_the_table(self):
-
         self.table_green = Table(casino=self.casino, name='Green', max_number_of_players=4)
         # add first player to the table
         self.table_green.join_to_the_table(player=self.mike)
@@ -52,7 +49,6 @@ class TableTest(unittest.TestCase):
         self.assertIn(self.peter, self.table_green.person_at_the_table)
 
     def test_disconnect_by_table(self):
-
         self.table_green = Table(casino=self.casino, name='Green', max_number_of_players=4)
         # join two player in table
         self.table_green.join_to_the_table(player=self.mike)
