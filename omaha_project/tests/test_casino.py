@@ -105,9 +105,6 @@ class CasinoTest(unittest.TestCase):
         self.assertEqual(self.lukas.actual_table, None)
 
     def test_check_if_can_create_game(self):
-        """
-        Not everything cases
-        """
         # table not exists
         self.assertEqual(
             self.casino.check_if_can_create_game(table_name='Grey', croupier=self.gregor,
@@ -137,3 +134,15 @@ class CasinoTest(unittest.TestCase):
         game = self.casino.create_game_omaha(table_name='Green', croupier=self.gregor,
                                              money_min_to_connect=3)
         self.assertNotEqual(game, None)
+
+    def test_cant_create_game_by_table(self):
+        # create table
+        self.table_green = self.casino.add_table(name='Yellow', max_number_of_players=1)
+        # add player
+        self.casino.add_player_to_table(name_table='Yellow', player=self.mike)
+        # dont add player because max_number_of_players is only 1, we cant start game witch 1 players
+        self.casino.add_player_to_table(name_table='Yellow', player=self.arthur)
+
+        game = self.casino.create_game_omaha(table_name='Yellow', croupier=self.gregor,
+                                             money_min_to_connect=1)
+        self.assertEqual(game, None)

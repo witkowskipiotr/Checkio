@@ -169,3 +169,55 @@ class GameTest(unittest.TestCase):
             if win and not isinstance(win, bool):
                 print(win.name)
                 print(win.surname)
+
+    def test_check_win_on_end(self):
+        # peter and mike are normal players and they not pass game
+        self.game.start_game()
+        self.game.preflop_round()
+        self.game.flop_round()
+        self.game.turn_round()
+        # winner = self.game.who_win()
+        #
+        # print(winner.name, winner.surname)
+        # self.game.best_combination_card_layout(self.mike)
+
+    #
+    #
+    # def test_check_win_royal_flush(self):
+    #     # mike is first he have Royal flush
+    #     self.game.start_game()
+    #     self.game.cards_on_table = ['treflA', 'treflK', 'treflQ', '  pik4', '  pik5']
+    #
+    #     self.game.game_players[0].cards = ['treflJ', 'trefl10', '  pik6', '  pik7']
+    #
+    #     self.game.game_players[1].cards = [' karoA', '  pikA', ' kierA', ' karoK']
+    #     player = self.game.who_win()
+    #     self.assertEqual(player, self.mike)
+
+    def test_check_win_flush(self):
+        # mike is first he have Royal flush
+        self.game.start_game()
+        self.game.cards_on_table = ['trefl5', 'trefl6', 'trefl7', '  pik4', '  pik5']
+
+        self.game.game_players[0].cards = ['trefl4', 'trefl3', '  pik6', '  pik7']
+
+        self.game.game_players[1].cards = ['trefl8', 'trefl9', ' kierA', ' karoK']
+        player = self.game.who_win()
+        print(player == self.mike)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

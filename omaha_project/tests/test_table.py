@@ -9,8 +9,6 @@ class TableTest(unittest.TestCase):
     def setUp(self):
         # initialize person
         self.casino = Casino(name='Cristal Casino', adress='Królewska 11, Warszawa')
-        self.table_green = Table(casino=self.casino, name='Green', max_number_of_players=4)
-
         # create croupier
         self.croupier = self.casino.add_croupier(name='Grzegorz',
                                                  surname='Brzęczyszczykiewicz',
@@ -23,6 +21,7 @@ class TableTest(unittest.TestCase):
 
     def test_create_table(self):
 
+        self.table_green = Table(casino=self.casino, name='Green', max_number_of_players=4)
         self.assertEqual(self.table_green.casino, self.casino)
         self.assertEqual(self.table_green.name, 'Green')
         self.assertEqual(self.table_green.max_number_of_players, 4)
@@ -30,6 +29,8 @@ class TableTest(unittest.TestCase):
 
     def test_join_croupier_to_the_table(self):
         # nobody is by the table
+        self.table_green = Table(casino=self.casino, name='Green', max_number_of_players=4)
+
         self.assertEqual(len(self.table_green.person_at_the_table), 0)
         # croupier not join to the table because he is empolyee
         self.table_green.join_to_the_table(player=self.croupier)
@@ -38,6 +39,8 @@ class TableTest(unittest.TestCase):
         self.assertEqual(len(self.table_green.person_at_the_table), 0)
 
     def test_join_to_the_table(self):
+
+        self.table_green = Table(casino=self.casino, name='Green', max_number_of_players=4)
         # add first player to the table
         self.table_green.join_to_the_table(player=self.mike)
         self.assertEqual(len(self.table_green.person_at_the_table), 1)
@@ -49,6 +52,8 @@ class TableTest(unittest.TestCase):
         self.assertIn(self.peter, self.table_green.person_at_the_table)
 
     def test_disconnect_by_table(self):
+
+        self.table_green = Table(casino=self.casino, name='Green', max_number_of_players=4)
         # join two player in table
         self.table_green.join_to_the_table(player=self.mike)
         self.table_green.join_to_the_table(player=self.peter)
