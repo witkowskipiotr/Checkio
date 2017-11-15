@@ -135,6 +135,106 @@ class GameTest(unittest.TestCase):
         self.assertEqual(self.game.step, 4)
         self.assertEqual(len(self.game.cards_on_table), 5)
 
+    def test_cards_split(self):
+        self.initialize_game(start_game=False)
+        # check slave function
+        self.assertEqual(
+            self.game.cards_split(cards=['treflA', '  pik5', ' karo10']),
+            [('trefl', 'A'), ('  pik', '5'), (' karo', '10')]
+        )
+
+    def test_get_count_and_card_over_one(self):
+        self.initialize_game(start_game=False)
+        # check slave function
+        self.assertEqual(
+            self.game.get_count_and_card_over_one(cards_number=[1, 3, 4, 4, 5]),
+            [(2, 4)],
+        )
+        self.assertEqual(
+            self.game.get_count_and_card_over_one(cards_number=[5, 5, 4, 4, 5]),
+            [(3, 5), (2, 4)]
+        )
+        self.assertEqual(
+            self.game.get_count_and_card_over_one(cards_number=[1, 2, 3, 4, 5]),
+            []
+        )
+
+    def test_amount_consecutive_items(self):
+        self.initialize_game(start_game=False)
+        # check slave function
+        self.assertEqual(
+            self.game.max_amount_consecutive_items(cards_number=[2, 3, 6, 7, 8]),
+            (3, 8)
+        )
+        self.assertEqual(
+            self.game.max_amount_consecutive_items(cards_number=[1, 2, 3, 4, 5]),
+            (5, 5)
+        )
+        self.assertEqual(
+            self.game.max_amount_consecutive_items(cards_number=[10, 2, 5, 4, 3]),
+            (4, 5)
+        )
+        self.assertEqual(
+            self.game.max_amount_consecutive_items(cards_number=[1, 3, 4, 4, 5]),
+            (3, 5)
+        )
+        self.assertEqual(
+            self.game.max_amount_consecutive_items(cards_number=[1, 3, 5, 7, 9]),
+            (-1, -1)
+        )
+
+    def test_best_combination_card_layout_royal_flush(self):
+        """Royal flush"""
+        self.initialize_game(start_game=True)
+        self.game.cards_on_table = ['treflA', 'treflK', 'treflQ', '  pik4', '  pik5']
+        self.mike.cards = ['treflJ', 'trefl10', '  pik6', '  pik7']
+
+        self.assertEqual(self.game.best_combination_card_layout(player=self.mike),
+                         ('Royal flush', [12, 1]))
+
+    def test_best_combination_card_layout_straight_flush(self):
+        """Straight flush"""
+        self.initialize_game(start_game=True)
+        self.game.cards_on_table = ['trefl9', 'treflK', 'treflQ', '  pik4', '  pik5']
+        self.mike.cards = ['treflJ', 'trefl10', '  pik6', '  pik7']
+
+        self.assertEqual(self.game.best_combination_card_layout(player=self.mike),
+                         ('Straight flush', [[11], 1]))
+
+    def test_best_combination_card_layout_flush(self):
+        """Flush"""
+        self.initialize_game(start_game=True)
+        self.game.cards_on_table = ['treflA', 'treflK', 'treflQ', '  pik4', '  pik5']
+
+        self.mike.cards = [' karo2', ' karo10', '  pik6', '  pik7']
+        self.assertEqual(self.game.best_combination_card_layout(player=self.mike),
+                         ('Flush', [[2, 3, 4, 5], 2]))
+
+    def test_best_combination_card_layout_quads(self):
+        """Quads"""
+        self.initialize_game(start_game=True)
+        self.game.cards_on_table = ['treflA', '  pikA', '  pikQ', '  pik4', '  pik5']
+
+        self.mike.cards = [' karo2', ' karoA', 'treflA', ' karo7']
+        self.assertEqual(self.game.best_combination_card_layout(player=self.mike),
+                         ('Quads', [(4, 12)]))
+
+    # full
+    def test_best_combination_card_layout_full(self):
+        """Full"""
+        self.initialize_game(start_game=True)
+        self.game.cards_on_table = ['treflA', '  pikA', '  pikQ', '  pik4', '  pik5']
+
+        self.mike.cards = [' karo2', ' karo5', 'trefl2', ' karo5']
+        self.assertEqual(self.game.best_combination_card_layout(player=self.mike),
+                         ('Full', [(4, 12)]))
+
+    # Straight
+    # Three
+    # Two Pairs
+    # A Pair
+    # None
+
     def test_check_win_before_end(self):
         # peter and mike are normal players and they not pass game
         self.initialize_game(start_game=True)
@@ -173,18 +273,18 @@ class GameTest(unittest.TestCase):
         # print(winner.name, winner.surname)
         # self.game.best_combination_card_layout(self.mike)
 
-    #
-    #
-    # def test_check_win_royal_flush(self):
-    #     # mike is first he have Royal flush
-    #     self.initialize_game(start_game=True)
-    #     self.game.cards_on_table = ['treflA', 'treflK', 'treflQ', '  pik4', '  pik5']
-    #
-    #     self.game.game_players[0].cards = ['treflJ', 'trefl10', '  pik6', '  pik7']
-    #
-    #     self.game.game_players[1].cards = [' karoA', '  pikA', ' kierA', ' karoK']
-    #     player = self.game.who_win()
-    #     self.assertEqual(player, self.mike)
+
+
+    def test_check_win_royal_flush(self):
+        # mike is first he have Royal flush
+        self.initialize_game(start_game=True)
+        self.game.cards_on_table = ['treflA', 'treflK', 'treflQ', '  pik4', '  pik5']
+
+        self.game.game_players[0].cards = ['treflJ', 'trefl10', '  pik6', '  pik7']
+
+        self.game.game_players[1].cards = [' karoA', '  pikA', ' kierA', ' karoK']
+        player = self.game.who_win()
+        self.assertEqual(player, self.mike)
 
     def test_check_win_flush(self):
         self.initialize_game(start_game=True)

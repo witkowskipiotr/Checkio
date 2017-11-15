@@ -17,12 +17,14 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="table.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/models/table.py">
+            <file leaf-file-name="test_game.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/tests/test_game.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="720">
-                    <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-                    <folding />
+                  <state relative-caret-position="258">
+                    <caret line="225" column="36" lean-forward="true" selection-start-line="225" selection-start-column="36" selection-end-line="225" selection-end-column="56" />
+                    <folding>
+                      <element signature="e#0#15#0" expanded="true" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -34,50 +36,50 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_casino.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/test_casino.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="161" column="14" lean-forward="false" selection-start-line="161" selection-start-column="14" selection-end-line="161" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_table.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_table.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_game.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_game.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_deck.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_deck.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="game.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/models/game.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="477">
+                  <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#82#110#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="deck.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/models/deck.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="30" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="game.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/models/game.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="129">
+                  <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+                  <folding>
+                    <element signature="e#82#110#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -88,12 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Table</find>
-      <find>Deck</find>
-      <find>Game</find>
-      <find>join_the_game</find>
-      <find>casino</find>
-      <find>take_the_card_with_deck()</find>
       <find>self.croupier.take_the_card_with_deck(deck=self.deck)</find>
       <find>cards</find>
       <find>table.person_at_the_table</find>
@@ -118,6 +114,12 @@
       <find>self.initialize_game()</find>
       <find>check</find>
       <find>add_cassino</find>
+      <find>compare_result</find>
+      <find>get_count_card</find>
+      <find>get_count_and_card_over_one</find>
+      <find>count</find>
+      <find>max_amount_consecutive_items</find>
+      <find>amount_consecutive_items</find>
     </findStrings>
     <replaceStrings>
       <replace>take_the_card_with_deck(deck=self.deck)</replace>
@@ -153,16 +155,16 @@
         <option value="$PROJECT_DIR$/models/people/player_normal.py" />
         <option value="$PROJECT_DIR$/tests/old/test_deck.py" />
         <option value="$PROJECT_DIR$/tests/deck.py" />
-        <option value="$PROJECT_DIR$/models/deck.py" />
         <option value="$PROJECT_DIR$/models/people/player_random_end.py" />
         <option value="$PROJECT_DIR$/models/people/player.py" />
         <option value="$PROJECT_DIR$/models/table.py" />
         <option value="$PROJECT_DIR$/models/casino.py" />
-        <option value="$PROJECT_DIR$/models/game.py" />
-        <option value="$PROJECT_DIR$/tests/test_game.py" />
         <option value="$PROJECT_DIR$/tests/test_table.py" />
         <option value="$PROJECT_DIR$/tests/test_deck.py" />
         <option value="$PROJECT_DIR$/tests/test_casino.py" />
+        <option value="$PROJECT_DIR$/models/deck.py" />
+        <option value="$PROJECT_DIR$/models/game.py" />
+        <option value="$PROJECT_DIR$/tests/test_game.py" />
       </list>
     </option>
   </component>
@@ -205,7 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,7 +268,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -285,8 +287,8 @@
       <recent name="$PROJECT_DIR$/models/People" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest CasinoTest.test_can_create_game_omaha">
-    <configuration default="false" name="Unittest CasinoTest.test_add_player_table" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittest GameTest.test_best_combination_card_layout_full">
+    <configuration default="false" name="Unittest GameTest.test_check_win_flush" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -296,9 +298,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="omaha_project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_casino.py" />
-      <option name="CLASS_NAME" value="CasinoTest" />
-      <option name="METHOD_NAME" value="test_add_player_table" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_game.py" />
+      <option name="CLASS_NAME" value="GameTest" />
+      <option name="METHOD_NAME" value="test_check_win_flush" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -308,7 +310,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest CasinoTest.test_del_player_table" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest GameTest.test_best_combination_card_layout" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -318,9 +320,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="omaha_project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_casino.py" />
-      <option name="CLASS_NAME" value="CasinoTest" />
-      <option name="METHOD_NAME" value="test_del_player_table" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_game.py" />
+      <option name="CLASS_NAME" value="GameTest" />
+      <option name="METHOD_NAME" value="test_best_combination_card_layout" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -330,7 +332,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest CasinoTest.test_check_if_can_create_game" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest GameTest.test_best_combination_card_layout_straight_flush" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -340,9 +342,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="omaha_project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_casino.py" />
-      <option name="CLASS_NAME" value="CasinoTest" />
-      <option name="METHOD_NAME" value="test_check_if_can_create_game" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_game.py" />
+      <option name="CLASS_NAME" value="GameTest" />
+      <option name="METHOD_NAME" value="test_best_combination_card_layout_straight_flush" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -352,7 +354,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest CasinoTest.test_can_create_game" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest GameTest.test_best_combination_card_layout_quads" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -362,9 +364,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="omaha_project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_casino.py" />
-      <option name="CLASS_NAME" value="CasinoTest" />
-      <option name="METHOD_NAME" value="test_can_create_game" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_game.py" />
+      <option name="CLASS_NAME" value="GameTest" />
+      <option name="METHOD_NAME" value="test_best_combination_card_layout_quads" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -374,7 +376,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest CasinoTest.test_can_create_game_omaha" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest GameTest.test_best_combination_card_layout_full" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -384,9 +386,9 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="omaha_project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_casino.py" />
-      <option name="CLASS_NAME" value="CasinoTest" />
-      <option name="METHOD_NAME" value="test_can_create_game_omaha" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_game.py" />
+      <option name="CLASS_NAME" value="GameTest" />
+      <option name="METHOD_NAME" value="test_best_combination_card_layout_full" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -531,19 +533,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_add_player_table" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_del_player_table" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_check_if_can_create_game" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_can_create_game" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_can_create_game_omaha" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_check_win_flush" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_best_combination_card_layout" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_best_combination_card_layout_straight_flush" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_best_combination_card_layout_quads" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_best_combination_card_layout_full" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_can_create_game_omaha" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_can_create_game" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_check_if_can_create_game" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_del_player_table" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest CasinoTest.test_add_player_table" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_best_combination_card_layout_full" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_best_combination_card_layout_quads" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_best_combination_card_layout_straight_flush" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_best_combination_card_layout" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest GameTest.test_check_win_flush" />
       </list>
     </recent_temporary>
   </component>
@@ -561,42 +563,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_CasinoTest_test_add_player_table - 2017.11.15 at 11h 17m 51s.xml">
-      <configuration name="Unittest CasinoTest.test_add_player_table" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_quads - 2017.11.15 at 15h 21m 43s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_quads" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CasinoTest_test_add_table - 2017.11.15 at 11h 16m 04s.xml">
-      <configuration name="Unittest CasinoTest.test_add_table" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_quads - 2017.11.15 at 15h 22m 53s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_quads" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CasinoTest_test_add_table - 2017.11.15 at 11h 16m 22s.xml">
-      <configuration name="Unittest CasinoTest.test_add_table" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_quads - 2017.11.15 at 15h 22m 54s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_quads" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CasinoTest_test_add_table - 2017.11.15 at 11h 16m 42s.xml">
-      <configuration name="Unittest CasinoTest.test_add_table" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_quads - 2017.11.15 at 15h 22m 56s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_quads" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CasinoTest_test_can_create_game - 2017.11.15 at 11h 21m 55s.xml">
-      <configuration name="Unittest CasinoTest.test_can_create_game" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_quads - 2017.11.15 at 15h 23m 09s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_quads" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CasinoTest_test_can_create_game_omaha - 2017.11.15 at 11h 24m 25s.xml">
-      <configuration name="Unittest CasinoTest.test_can_create_game_omaha" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_quads - 2017.11.15 at 15h 24m 02s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_quads" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CasinoTest_test_check_if_can_create_game - 2017.11.15 at 11h 19m 03s.xml">
-      <configuration name="Unittest CasinoTest.test_check_if_can_create_game" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_quads - 2017.11.15 at 15h 27m 44s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_quads" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CasinoTest_test_del_player_table - 2017.11.15 at 11h 18m 37s.xml">
-      <configuration name="Unittest CasinoTest.test_del_player_table" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_quads - 2017.11.15 at 15h 28m 16s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_quads" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CasinoTest_test_del_table - 2017.11.15 at 11h 17m 03s.xml">
-      <configuration name="Unittest CasinoTest.test_del_table" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_quads - 2017.11.15 at 15h 28m 20s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_quads" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_CasinoTest_test_del_table - 2017.11.15 at 11h 17m 48s.xml">
-      <configuration name="Unittest CasinoTest.test_del_table" configurationId="tests" />
+    <history-entry file="Unittest_GameTest_test_best_combination_card_layout_straight_flush - 2017.11.15 at 15h 17m 48s.xml">
+      <configuration name="Unittest GameTest.test_best_combination_card_layout_straight_flush" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1926" height="1058" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15416667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10729167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -605,7 +607,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38686132" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3785193" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -622,52 +624,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/models/game.py</url>
-          <line>230</line>
-          <option name="timeStamp" value="147" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_game.py</url>
-          <line>108</line>
-          <option name="timeStamp" value="156" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_game.py</url>
-          <line>117</line>
-          <option name="timeStamp" value="157" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_game.py</url>
-          <line>127</line>
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_game.py</url>
-          <line>49</line>
-          <option name="timeStamp" value="164" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_game.py</url>
-          <line>66</line>
-          <option name="timeStamp" value="168" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_game.py</url>
-          <line>34</line>
-          <option name="timeStamp" value="169" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_game.py</url>
-          <line>100</line>
-          <option name="timeStamp" value="170" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_casino.py</url>
           <line>62</line>
           <option name="timeStamp" value="177" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/models/game.py</url>
+          <line>198</line>
+          <option name="timeStamp" value="222" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="187" />
+      <option name="time" value="231" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -694,7 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="10" column="84" lean-forward="false" selection-start-line="10" selection-start-column="84" selection-end-line="10" selection-end-column="84" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -720,9 +686,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="972">
           <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding>
-            <element signature="e#52#78#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -772,9 +736,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding>
-            <element signature="e#52#78#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -918,24 +880,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/deck.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="65" lean-forward="false" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/casino.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="104" column="8" lean-forward="false" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
-          <folding>
-            <element signature="e#52#78#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -960,13 +904,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/game.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_table.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1631">
-          <caret line="94" column="28" lean-forward="false" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="28" />
-          <folding>
-            <element signature="e#82#110#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="630">
+          <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_deck.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_casino.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2064">
+          <caret line="161" column="14" lean-forward="false" selection-start-line="161" selection-start-column="14" selection-end-line="161" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/casino.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="104" column="8" lean-forward="false" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -978,45 +942,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python3.6/unittest/case.py">
+    <entry file="file://$PROJECT_DIR$/models/deck.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="604" column="0" lean-forward="false" selection-start-line="604" selection-start-column="0" selection-end-line="604" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_table.py">
+    <entry file="file:///usr/lib/python3.6/unittest/case.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        <state relative-caret-position="186">
+          <caret line="827" column="0" lean-forward="false" selection-start-line="827" selection-start-column="0" selection-end-line="827" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+        <state relative-caret-position="258">
+          <caret line="225" column="36" lean-forward="true" selection-start-line="225" selection-start-column="36" selection-end-line="225" selection-end-column="56" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_deck.py">
+    <entry file="file://$PROJECT_DIR$/models/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_casino.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="161" column="14" lean-forward="false" selection-start-line="161" selection-start-column="14" selection-end-line="161" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="129">
+          <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+          <folding>
+            <element signature="e#82#110#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

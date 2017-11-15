@@ -108,33 +108,95 @@ class Game:
             return self.game_players[0]
         return False
 
-
-
-
-
     def cards_split(self, *, cards: list) -> list:
+        """
+        Split all card colour and number
+        return: list of tuple split cards element colour and number
+        for example:
+            self.cards_split(cards=['treflA', '  pik5', ' karo10']) ->
+                -> [('trefl', 'A'), ('  pik', '5'), (' karo', '10')]
+        """
         result = [(card[:5], card[5:]) for card in cards]
         return result
 
-    def get_count_card(self, *, cards_number: list) -> list:
+    def get_count_and_card_over_one(self, *, cards_number: list) -> list:
+        """
+        if card count in cards_number is over 2
+        return list of count and this name card
+            if not repeated number then return empty list
+            list is sorted descending by number of count
+        for example:
+            self.get_count_and_card_over_one(cards_number=[1, 2, 3, 4, 5]) -> []
+            self.get_count_and_card_over_one(cards_number=[1, 3, 4, 4, 5]) -> [(2, 4)]
+            self.get_count_and_card_over_one(cards_number=[5, 5, 4, 4, 5]) -> [(3, 5), (2, 4)]
+        """
         count_card = set()
         for card in cards_number:
             if cards_number.count(card) > 1:
                 count_card.add((cards_number.count(card), card))
         result = list(count_card)
-        sorted(result, key=lambda cards: cards[0])
+        result.sort(key=lambda cards: cards[0], reverse=True)
         return result
 
-    def amount_consecutive_items(self, *, cards_number: list) -> tuple:
-        card_old = None
-        for item, card in enumerate(cards_number):
-            if not card_old:
-                card_old = card
-            elif card_old != card:
-                card_old += 1
-                break
-            card_old += 1
-        return (item + 1, card_old - 1)
+    def max_amount_consecutive_items(self, *, cards_number: list) -> tuple:
+        """
+        We call the function when we want to see if the cards are matching up one by one.
+        Args:
+            cards_number: list with integer number
+        Return the number of these elements and their highest card if exist else return (-1,-1)
+        For example:
+            self.game.max_amount_consecutive_items(cards_number=[2, 3, 6, 7, 8])
+            -> (3, 8) -> element 6, 7, 8 - count = 3, highest_card = 8
+        """
+        if not cards_number:
+            return ()
+        cards_number.sort()
+
+        # find the same
+        list_help = [card - item for item, card in enumerate(cards_number)]
+        list = self.get_count_and_card_over_one(cards_number=list_help)
+        if list:
+            index = len(list_help) - 1
+            count, item = list[0]
+            for element in list_help[::-1]:
+                if item == element:
+                    result = count, cards_number[index]
+                    return result
+                index -= 1
+        return -1, -1
+
+    def best_combination_card_layout(self, *, player):
+        """
+        We checks the best cards for combination 3 card table and 2 card player
+        Args:
+            player: The player who checks the best cards
+        Return:
+            Combination type and card combination need to settle
+        For example:
+            1.
+            self.game.cards_on_table = ['treflA', 'treflK', 'treflQ', '  pik4', '  pik5']
+            self.mike.cards = [' karo2', ' karo10', '  pik6', '  pik7']
+                the best card -> pik4, pik5, pik6, pik7
+            return -> [[2, 3, 4, 5], 2]
+                number equal [2, 3, 4, 5]
+                color equal 2-pik
+
+            2. the best card -> treflA, pikA, karoA, kierA -> ('Quads', [(4, 12)])
+                12 - the card number
+        """
+        cards = self.cards_split(cards=player.cards)
+        cards_number_player = [self.deck.numbers[card[1]] for card in cards]
+        cards_number_player.sort()
+        best_layout = ('None', cards_number_player)
+        for index_cards_table in range(len(self.cards_on_table)-1):
+            cards_table = self.cards_on_table[index_cards_table : index_cards_table + 3]
+            for index_cards_player in range(len(player.cards) - 1):
+                cards_player = player.cards[index_cards_player: index_cards_player + 2]
+
+                result = self.check_card_layout(cards=cards_table + cards_player)
+                if result[0] and self.hierarchy[result[0]] < self.hierarchy[best_layout[0]]:
+                    best_layout = result
+        return best_layout
 
     def check_card_layout(self, *, cards: list) -> (str, list):
         result = ''
@@ -146,21 +208,21 @@ class Game:
         is_flush = all(card == cards_colour[0] for card in cards_colour)
 
         # check_straight
-        amount, card_straight = self.amount_consecutive_items(cards_number=cards_number)
+        amount, card_straight = self.max_amount_consecutive_items(cards_number=cards_number)
         is_straight = amount == 5
 
         # check 'Royal flush', 'Straight flush', 'Flush', 'Straight'
         if is_flush and is_straight and card_straight == self.deck.numbers['A']:
-            return 'Royal flush', [card_straight]
+            return 'Royal flush', [card_straight, cards_colour[0]]
         elif is_flush and is_straight:
-            return 'Straight flush', [[card_straight]]
+            return 'Straight flush', [[card_straight], cards_colour[0]]
         elif is_flush:
-            return 'Flush', [cards_number]
+            return 'Flush', [cards_number, cards_colour[0]]
         elif is_straight:
             return 'Straight', [cards_number]
 
         # get count repeated cards
-        amount_item = self.get_count_card(cards_number=cards_number)
+        amount_item = self.get_count_and_card_over_one(cards_number=cards_number)
 
         # check if it is two pair or full
         if len(amount_item) > 1:
@@ -177,21 +239,6 @@ class Game:
             elif amount_item[0][0] == 2:
                 return 'A Pair', amount_item
         return 'None', []
-
-    def best_combination_card_layout(self, *, player):
-        cards = self.cards_split(cards=player.cards)
-        cards_number_player = [self.deck.numbers[card[1]] for card in cards]
-        sorted(cards_number_player)
-        best_layout = ('None', cards_number_player)
-        for index_cards_table in range(len((self.cards_on_table))-1):
-            cards_table = self.cards_on_table[index_cards_table : index_cards_table + 3]
-            for index_cards_player in range(len((player.cards)) - 1):
-                cards_player = player.cards[index_cards_player: index_cards_player + 2]
-
-                result = self.check_card_layout(cards=cards_table+cards_player)
-                if result[0] and self.hierarchy[result[0]] < self.hierarchy[best_layout[0]]:
-                    best_layout = result
-        return best_layout
 
     def who_win(self):
         """compares player cards"""
