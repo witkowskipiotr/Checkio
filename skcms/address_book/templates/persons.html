@@ -6,8 +6,10 @@
 
 {% block content %}
 
+<p><a href="/address_book/person_new">Dodaj</a> </p>
 {% for person in persons %}
-    <p>{{ person.name }} {{ person.surname }}</p>
+    <p>{{ person.id }}. <a href="/address_book/person/{{ person.pk }}">
+        {{ person.name }} {{ person.surname }}</a></p>
 {% endfor %}
 
 {% endblock %}

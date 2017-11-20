@@ -10,9 +10,7 @@ class CasinoTest(unittest.TestCase):
         self.casino = Casino(name='Cristal Casino', adress='Królewska 11, Warszawa')
 
         # create 2 croupier
-        self.gregor = self.casino.add_croupier(name='Grzegorz',
-                                               surname='Brzęczyszczykiewicz',
-                                               shuffle_last=True)
+        self.gregor = self.casino.add_croupier(name='Grzegorz', surname='Brzęczyszczykiewicz', shuffle_last=True)
         self.pawel = self.casino.add_croupier(name='Paweł',
                                               surname='Dębowski',
                                               shuffle_last=False)
@@ -20,10 +18,8 @@ class CasinoTest(unittest.TestCase):
         # create players
         self.mike = self.casino.add_player(name='Michał', surname='Nowak',
                                            money=10, type_player='random')
-        self.peter = self.casino.add_player(name='Piotr', surname='Witkowski',
-                                            money=100.52, type_player='random')
-        self.lukas = self.casino.add_player(name='Łukasz', surname='Witkowski',
-                                            money=12, type_player='random')
+        self.peter = self.casino.add_player(name='Piotr', surname='Witkowski', money=100.52, type_player='random')
+        self.lukas = self.casino.add_player(name='Łukasz', surname='Witkowski', money=12, type_player='random')
         self.arthur = self.casino.add_player(name='Artur', surname='Witkowski',
                                              money=1000, type_player='random')
 

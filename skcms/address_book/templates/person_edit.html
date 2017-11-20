@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Persons List {% endblock %}
+
+{% block title_page %} Persons List {% endblock %}
+
+{% block content %}
+
+<form action="" method="post" >
+    {% csrf_token %}
+    {{ form_person.as_p}}
+    {{ form_address.as_p}}
+    {{ form_phone.as_p}}
+    {{ form_email.as_p}}
+    <p>
+        <input type="submit" value="Zapisz">
+        <input type=button value="Anuluj" onClick="javascript:history.go(-1);">
+    </p>
+</form>
+
+{% endblock %}

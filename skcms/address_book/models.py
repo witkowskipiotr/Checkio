@@ -30,7 +30,7 @@ class Person(models.Model):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=50)
     description = models.TextField()
-    address = models.ForeignKey(to=Address, on_delete=None)
+    address = models.ForeignKey(to=Address, on_delete=models.CASCADE)
     phone = models.ForeignKey(to=Phone, on_delete=None)
     email = models.ForeignKey(to=Email, on_delete=None)
 
@@ -41,6 +41,7 @@ class Group(models.Model):
 
 
 class GroupPerson(models.Model):
-    name = models.CharField(max_length=20, primary_key=True)
+    id = models.IntegerField(primary_key=True, default=0, editable=False)
     person = models.ForeignKey(to=Person, on_delete=models.CASCADE)
     group = models.ForeignKey(to=Group, on_delete=models.CASCADE)
+

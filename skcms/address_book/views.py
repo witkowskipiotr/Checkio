@@ -6,63 +6,23 @@ from .forms import AddressForm, PersonForm, PhoneForm, EmailForm
 from .models import Address, Person, Email, Phone
 
 
-class AddressView(TemplateView):
-    def get(self, request, pk):
-        data = {}
-        if pk:
-            detail = Address.objects.get(pk=pk)
-            if detail:
-                data['city'] = detail.city
-                data['street'] = detail.street
-                data['number_flat'] = detail.number_flat
-                data['number_house'] = detail.number_house
-        return TemplateResponse(request, 'address_detail.html', data)
-
-    def post(self, request):
-        id = request.POST.get("id")
-        if id:
-            instance = get_object_or_404(Address, id=1)
-            form = AddressForm(request.POST or None, instance=instance)
-            data = {"forms": form, "title": "addres"}
-            return TemplateResponse(request, 'address_new.html', data)
-
-        return TemplateResponse(request, 'address_detail.html', request)
-
-
-class AddressNewView(TemplateView):
-    def get(self, request):
-        form = AddressForm()
-        data = {"forms": form, "title": "address"}
-        return TemplateResponse(request, 'address_new.html', data)
-
-    def post(self, request):
-        form = AddressForm(request.POST)
-        data = {}
-        if form.is_valid():
-            address = form.save(commit=False)
-            # address.author = request.user
-            # address.published_date = timezone.now()
-            address.save()
-            return redirect('address_detail', pk=address.pk)
-
-
 class PersonsView(TemplateView):
     def get(self, request):
-        persons = Person.objects.all()
+        persons = Person.objects.all().order_by('surname')
         return render(request=request, template_name="persons.html",
                       context={'persons': persons})
 
 
 class PersonView(TemplateView):
-    
-    def get(self, request, pk):
+    def get(self, request, id):
         ctx = {}
-        if pk:
-            person = Person.objects.get(pk=pk)
-            address = Address.objects.get(pk=person.address_id)
-            phone = Phone.objects.get(pk=person.phone_id)
-            email = Email.objects.get(pk=person.email_id)
+        if id:
+            person = Person.objects.get(id=id)
+            address = Address.objects.get(id=person.address_id)
+            phone = Phone.objects.get(id=person.phone_id)
+            email = Email.objects.get(id=person.email_id)
             if person:
+                ctx['id'] = person.id
                 ctx['name'] = person.name
                 ctx['surname'] = person.surname
                 ctx['description'] = person.description
@@ -81,9 +41,9 @@ class PersonView(TemplateView):
                 for type_email in email.TYPE_EMAIL:
                     if type_email[0] == email.type:
                         ctx['type_email'] = type_email[1]
-        return TemplateResponse(request, 'person_detail.html', ctx)
+        return TemplateResponse(request, 'person.html', ctx)
 
-    def post(self, request):
+    def post(self, request): #TODO ?
         id_person = request.POST.get("id_person")
         id_address = request.POST.get("id_address")
         id_phone = request.POST.get("id_phone")
@@ -131,8 +91,79 @@ class PersonNewView(TemplateView):
             email = email_form.save(commit=True)
 
             person = person_form.save(commit=False)
-            person.address_id = address.pk
-            person.phone_id = phone.pk
-            person.email_id = email.pk
+            person.address_id = address.id
+            person.phone_id = phone.id
+            person.email_id = email.id
             person.save()
-            return redirect('address_detail', pk=address.pk)
+            return redirect('person', id=person.id)
+
+
+class PersonEditView(TemplateView):
+
+    def get(self, request, id):
+        if id:
+            instance_person = get_object_or_404(Person, id=id)
+            instance_address = get_object_or_404(Address, id=instance_person.address_id)
+            instance_phone = get_object_or_404(Phone, id=instance_person.phone_id)
+            instance_email = get_object_or_404(Email, id=instance_person.email_id)
+
+            person = PersonForm(request.POST or None, instance=instance_person)
+            address = AddressForm(request.POST or None, instance=instance_address)
+            phone = PhoneForm(request.POST or None, instance=instance_phone)
+            email = EmailForm(request.POST or None, instance=instance_email)
+
+            ctx = {"form_person": person, "form_address": address,
+                   "form_phone": phone, "form_email": email,
+                   "title": "Person", "id": id}
+
+            return TemplateResponse(request, 'person_edit.html', ctx)
+
+    def post(self, request, id):
+        instance_person = get_object_or_404(Person, id=id)
+        instance_address = get_object_or_404(Address, id=instance_person.address_id)
+        instance_phone = get_object_or_404(Phone, id=instance_person.phone_id)
+        instance_email = get_object_or_404(Email, id=instance_person.email_id)
+
+        person_form = PersonForm(request.POST or None, instance=instance_person)
+        address_form = AddressForm(request.POST or None, instance=instance_address)
+        phone_form = PhoneForm(request.POST or None, instance=instance_phone)
+        email_form = EmailForm(request.POST or None, instance=instance_email)
+
+        if address_form.is_valid():
+            address = address_form.save(commit=True)
+        if phone_form.is_valid():
+            phone = phone_form.save(commit=True)
+        if email_form.is_valid():
+            email = email_form.save(commit=True)
+        if person_form.is_valid():
+            person = person_form.save(commit=False)
+            person.address_id = address.id
+            person.phone_id = phone.id
+            person.email_id = email.id
+            person.save()
+            return redirect('person', id=person.id)
+
+
+class PersonDelView(TemplateView):
+
+    def get(self, request, id):
+        """Method get delete person data in table address phone email and person"""
+        if id:
+            person = get_object_or_404(Person, id=id)
+            # address = person.address
+
+            address = get_object_or_404(Address, id=person.address_id)
+            phone = get_object_or_404(Phone, id=person.phone_id)
+            email = get_object_or_404(Email, id=person.email_id)
+
+            if address:
+                address.delete()
+            if phone:
+                phone.delete()
+            if email:
+                email.delete()
+            if person:
+                person.delete()
+
+        return redirect('persons')
+

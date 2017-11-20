@@ -6,16 +6,21 @@
 </head>
 <body>
     <h1>Person</h1>
+    <p>
+        <a href="/address_book/person_del/{{ pk }}">Del</a>
+        <a href="/address_book/person_edit/{{ pk }}">Edit</a>
+        <a href="/address_book">Lists</a>
+    </p>
 
-    <p><strong>Name:</strong>{{ name }} </p>
-    <p><strong>Surname:</strong>{{ surname }} </p>
-    <p><strong>Description:</strong>{{ description }} </p>
+    <p><strong>Name: </strong>{{ name }} </p>
+    <p><strong>Surname: </strong>{{ surname }} </p>
+    <p><strong>Description: </strong>{{ description }} </p>
     <p><strong>Address:</strong> </p>
-    <p><strong>City:</strong>{{ city }}</p>
-    <p><strong>Street:</strong>{{ street }}</p>
-    <p><strong>number:</strong>{{ number_house }} / {{ number_house }}</p>
-    <p><strong>Phone {{ type_phone }}:</strong>{{ phone }}</p>
-    <p><strong>Email {{ type_email }}:</strong>{{ email }}</p>
+    <p>City: {{ city }}</p>
+    <p>Street: {{ street }}</p>
+    <p>number: {{ number_house }} / {{ number_house }}</p>
+    <p>Phone {{ type_phone }}: {{ phone }}</p>
+    <p>Email {{ type_email }}: {{ email }}</p>
 
 </body>
 </html>

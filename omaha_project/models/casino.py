@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 casino include many people, tables and game
 """
@@ -30,6 +31,7 @@ class Casino:
                                                  money_min_to_connect=1)
         The game plays in game
         """
+
     def __init__(self, *, name: str, adress: str):
         self.name = name
         self.adress = adress

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Group List {% endblock %}
+
+{% block title_page %} Group List {% endblock %}
+
+{% block content %}
+
+<p><a href="/group/person_new">Dodaj</a> </p>
+{% for group in groups %}
+    <p>{{ group.id }}. <a href="/address_book/person/{{ group.id }}">
+        {{ group.name }}</a></p>
+{% endfor %}
+
+{% endblock %}
