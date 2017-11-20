@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} Logged in {% endblock %}
+
+{% block title_page %} Logged in {% endblock %}
+
+{% block content %}
+
+<h3>Welcome: {{ user_name }}</h3>
+<p>
+    <a href="/accounts/logout/">Log out</a>
+</p>
+
+{% endblock %}

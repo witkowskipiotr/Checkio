@@ -6,15 +6,16 @@
 
 {% block content %}
 
-<form action="" method="post" >
+
+<form action="" method="post" name="query" class="form horizontal well">
     {% csrf_token %}
-    {{ form_person.as_p}}
-    {{ form_address.as_p}}
-    {{ form_phone.as_p}}
-    {{ form_email.as_p}}
+    {{ form_person.as_p }}
+    {{ form_address.as_p }}
+    {{ form_phone.as_p }}
+    {{ form_email.as_p }}
     <p>
-        <input type="submit" value="Zapisz">
-        <input type=button value="Anuluj" onClick="javascript:history.go(-1);">
+        <input type="submit" value="Zapisz" class="btn btn-inverse" name="submit">
+        <input type=button value="Anuluj" onClick="javascript:history.go(-1);" class="btn btn-inverse" name="anuluj">
     </p>
 </form>
 

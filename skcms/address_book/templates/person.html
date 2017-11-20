@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List Persons</title>
-</head>
-<body>
-    <h1>Person</h1>
+{% extends "base.html" %}
+
+{% block title %} Person {% endblock %}
+
+{% block title_page %} Person {% endblock %}
+
+{% block content %}
+
     <p>
         <a href="/address_book/person_del/{{ id }}">Del</a>
         <a href="/address_book/person_edit/{{ id }}">Edit</a>
@@ -22,5 +22,4 @@
     <p>Phone {{ type_phone }}: {{ phone }}</p>
     <p>Email {{ type_email }}: {{ email }}</p>
 
-</body>
-</html>
+{% endblock %}

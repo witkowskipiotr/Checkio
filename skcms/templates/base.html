@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="{% static 'css/bootstrap.min.css' %}"
+            type="text/css" rel="stylesheet" media="screen">
+
+        {% block head %}
+            <!--<link rel="stylesheet" href="style.css" />-->
+            <title>{% block title %} Tytuł strony {% endblock %} | My Webpage</title>
+        {% endblock %}
+
+    </head>
+    <body>
+
+        <div class="row">
+            <div class="topbar">
+                <div class="logo pull-left">
+                    <h1><a href="#"><img src="{% static 'img/poziom.jpg' %}"></a> </h1>
+                </div>
+                <div class="topbar-links pull-right">
+                    <a href="/accounts/login/">Log in</a> | <a href="/accounts/create_user">Sign up</a>
+                    <a href="/accounts/logout">Log out</a>
+                </div>
+            </div>
+        </div>
+
+
+
+          <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+        <H1 align="center">{% block title_page %} Tytuł {% endblock %}</H1>
+        <div id="content" class="container">
+            {% block content %}
+                zawartość
+            {% endblock %}
+        </div>
+
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    </body>
+
+    <footer>
+        <div id="footer">
+            <p></p>
+            {% block footer %}
+                &copy; Copyright 2017 by <a href="http://...">Witkowski</a>.
+            {% endblock %}
+        </div>
+        <strong>
+            Dzisiaj jest {{ now }}
+            | wersja: {{ version }}
+        </strong>
+    </footer>
+</html>

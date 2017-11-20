@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %} New address {% endblock %}
+
+{% block title_page %} New address {% endblock %}
+
+{% block content%}
+
+	<form method="POST" class="" action="address_new">{% csrf_token %}
+        <label>Your address: </label>
+
+		{{ forms.as_p }}
+
+		<button type="submit">Save</button>
+	</form>
+
+{% endblock %}

@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<form action="" method="post">
+<form action="" method="post" class="form horizontal well">
     {% csrf_token %}
     {{ form_person.as_p}}
     {{ form_address.as_p}}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %} Person detail {% endblock %}
+
+{% block title_page %} Person detail {% endblock %}
+
+{% block content %}
+
+<style>.wrapper{width:100%;}
+.box{float:left; height:250px;}
+.box:nth-child(1){
+   width:25%;
+   <!--background-color:red;-->
+
+}
+.box:nth-child(2){
+   width:50%;
+  <!--background-color:green;-->
+}
+.box:nth-child(3){
+   width:25%;
+  <!--background-color:yellow;-->
+}
+</style>
+
+<div align="center" class="wrapper">
+
+    <div class="box">
+        <p><strong>Name: </strong>{{ name }} </p>
+        <p><strong>Surname: </strong>{{ surname }} </p>
+        <p><strong>Description: </strong>{{ description }} </p>
+    </div>
+
+    <div class="box">
+        <p><strong>Address: </strong> </p>
+        <p><strong>City: </strong>{{ city }}</p>
+        <p><strong>Street: </strong>{{ street }}</p>
+        <p><strong>number: </strong>{{ number_flat }} / {{ number_house }}</p>
+    </div>
+
+    <div class="box">
+        <p><strong>Phone {{ type_phone }}: </strong>{{ number_phone }}</p>
+        <p><strong>Email {{ type_email }}: </strong>{{ email }}</p>
+    </div>
+
+</div>
+
+{% endblock %}
