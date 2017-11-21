@@ -22,9 +22,12 @@ from . import views
 admin.autodiscover()
 
 urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
     url(r'', include('address_book.urls')),
     url(r'', include('group.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('user_profile.urls')),
+    url(r'^notifications/', include('notifications.urls')),
+
     url(r'^accounts/login/$', views.login_view, name='login'),
     url(r'^accounts/auth/$', views.auth_view, name='auth'),
     url(r'^accounts/logout/$', views.log_out_view, name='logout'),
@@ -35,5 +38,5 @@ urlpatterns = [
     url(r'^accounts/create_user_success/$', views.create_user_success_view, name='create_user_success'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

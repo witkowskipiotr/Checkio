@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'address_book',
     'group',
+    'user_profile',
+    'notifications',
 ]
 
 MIDDLEWARE = [
@@ -127,4 +129,6 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
+
+AUTH_PROFILE_MODULE = 'user_profile.UserProfile'
 

@@ -12,14 +12,14 @@
         <a href="/address_book">Lists</a>
     </p>
 
-    <p><strong>Name: </strong>{{ name }} </p>
-    <p><strong>Surname: </strong>{{ surname }} </p>
-    <p><strong>Description: </strong>{{ description }} </p>
+    <p><strong>Name: </strong>{{ instance.name }} </p>
+    <p><strong>Surname: </strong>{{ instance.surname }} </p>
+    <p><strong>Description: </strong>{{ instance.description }} </p>
     <p><strong>Address:</strong> </p>
-    <p>City: {{ city }}</p>
-    <p>Street: {{ street }}</p>
-    <p>number: {{ number_house }} / {{ number_house }}</p>
-    <p>Phone {{ type_phone }}: {{ phone }}</p>
-    <p>Email {{ type_email }}: {{ email }}</p>
+    <p>City: {{ instance.address.city }}</p>
+    <p>Street: {{ instance.address.street }}</p>
+    <p>number: {{ instance.address.number_house }} / {{ instance.address.number_house }}</p>
+    <p>Phone {{ instance.phone.type_phone }}: {{ instance.phone.number_phone }}</p>
+    <p>Email {{ instance.email.type_email }}: {{ instance.email.email }}</p>
 
 {% endblock %}

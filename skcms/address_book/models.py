@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Address(models.Model):
@@ -7,8 +10,8 @@ class Address(models.Model):
     number_house = models.IntegerField()
     number_flat = models.IntegerField(null=True)
 
-    def __unicode__(self):
-        return self.city
+    def __str__(self):
+        return self.city + ' ' + self.street
 
 class Phone(models.Model):
     TYPE_PHONE = (
@@ -18,7 +21,7 @@ class Phone(models.Model):
     number_phone = models.CharField(max_length=30)
     type = models.IntegerField(choices=TYPE_PHONE)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.number_phone
 
 
@@ -30,7 +33,7 @@ class Email(models.Model):
     email = models.CharField(max_length=30, default="")
     type = models.IntegerField(choices=TYPE_EMAIL, default=1)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.email
 
 
@@ -41,8 +44,9 @@ class Person(models.Model):
     address = models.ForeignKey(to=Address, on_delete=models.CASCADE)
     phone = models.ForeignKey(to=Phone, on_delete=None)
     email = models.ForeignKey(to=Email, on_delete=None)
+    user = models.ForeignKey(to=User, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.surname + ' ' + self.name
 
 
@@ -50,7 +54,7 @@ class Group(models.Model):
     name = models.CharField(max_length=64)
     person = models.ManyToManyField(to=Person, through='GroupPerson')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 

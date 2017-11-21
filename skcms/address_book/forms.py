@@ -33,5 +33,5 @@ class PersonForm(forms.ModelForm):
 
     class Meta:
         model = Person
-        fields = ('name', 'surname', 'description')
+        fields = ('name', 'surname', 'description',)
         #, 'address', 'phone', 'email')

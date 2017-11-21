@@ -1,10 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.template.response import TemplateResponse
-from django.views.generic import TemplateView
-
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from django.template.response import TemplateResponse
 
+from notifications.models import Notifications
 
 # from .forms import AddressForm, PersonForm, PhoneForm, EmailForm
 # from .models import Address, Person, Email, Phone
@@ -26,7 +25,11 @@ def auth_view(request):
 
 
 def logged_in_view(request):
-    ctx = {'user_name': request.user.username}
+    notification = Notifications.objects.filter(user=request.user, viewed=False)
+    ctx = {
+        'user_name': request.user.username,
+        'notifications': notification
+    }
     return render(request=request, template_name="loggedin.html", context=ctx)
 
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.views.generic import TemplateView
+from django.contrib.auth.models import User
 
 from .forms import AddressForm, PersonForm, PhoneForm, EmailForm
 from .models import Address, Person, Email, Phone
@@ -8,39 +9,23 @@ from .models import Address, Person, Email, Phone
 
 class PersonsView(TemplateView):
     def get(self, request):
-        persons = Person.objects.all().order_by('surname')
+        try:
+            persons = Person.objects.filter(user=request.user).order_by('surname')
+        except:
+            persons = None
         return render(request=request, template_name="persons.html",
                       context={'persons': persons})
 
 
 class PersonView(TemplateView):
+
     def get(self, request, id):
         ctx = {}
         if id:
             person = Person.objects.get(id=id)
-            address = Address.objects.get(id=person.address_id)
-            phone = Phone.objects.get(id=person.phone_id)
-            email = Email.objects.get(id=person.email_id)
-            if person:
-                ctx['id'] = person.id
-                ctx['name'] = person.name
-                ctx['surname'] = person.surname
-                ctx['description'] = person.description
+            # check persmission if user doesnt have permission return "no permission"
+            ctx['instance'] = person
 
-                ctx['city'] = address.city
-                ctx['street'] = address.street
-                ctx['number_flat'] = address.number_flat
-                ctx['number_house'] = address.number_house
-
-                ctx['number_phone'] = phone.number_phone
-                for type_email in email.TYPE_EMAIL:
-                    if type_email[0] == email.type:
-                        ctx['type_phone'] = type_email[1]
-
-                ctx['email'] = email.email
-                for type_email in email.TYPE_EMAIL:
-                    if type_email[0] == email.type:
-                        ctx['type_email'] = type_email[1]
         return TemplateResponse(request, 'person.html', ctx)
 
     def post(self, request): #TODO ?
@@ -94,6 +79,7 @@ class PersonNewView(TemplateView):
             person.address_id = address.id
             person.phone_id = phone.id
             person.email_id = email.id
+            person.user = request.user
             person.save()
             return redirect('person', id=person.id)
 
