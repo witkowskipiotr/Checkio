@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.views.generic import TemplateView
@@ -22,7 +23,7 @@ class PersonView(TemplateView):
     def get(self, request, id):
         ctx = {}
         if id:
-            person = Person.objects.get(id=id)
+            person = get_object_or_404(Person, id=id, user=request.user)
             # check persmission if user doesnt have permission return "no permission"
             ctx['instance'] = person
 

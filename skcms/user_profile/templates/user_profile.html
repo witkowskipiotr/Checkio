@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %} Create user {% endblock %}
+
+{% block title_page %} Create user {% endblock %}
+
+{% block content %}
+
+<form action="/accounts/profile/" method="post" class="form horizontal well">
+    {% csrf_token %}
+
+    {{ forms.as_p }}
+    <input type="submit" class="btn btn-inverse" value="update">
+
+</form>
+
+{% endblock %}
