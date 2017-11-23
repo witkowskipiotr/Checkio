@@ -29,6 +29,30 @@ class GroupNewView(TemplateView):
             return HttpResponseRedirect(reverse('group:group_detail', args=(group.id,)))
 
 
+class GroupEditView(TemplateView):
+
+    def get(self, request, id):
+        if id:
+            instance_group = get_object_or_404(Group, id=id)
+
+            group_form = GroupForm(request.POST or None, instance=instance_group)
+
+            ctx = {"group_form": group_form,
+                   "title": "Person", "id": id}
+
+            return TemplateResponse(request, 'group/group_edit.html', ctx)
+
+    def post(self, request, id):
+        instance_group = get_object_or_404(Group, id=id)
+        group_form = GroupForm(request.POST or None, instance=instance_group)
+
+        if group_form.is_valid():
+            person = group_form.save(commit=False)
+            person.save()
+            return HttpResponseRedirect(reverse('group:group_edit', args=(id,)))
+
+
+
 class GroupPersonAddView(TemplateView):
     def get(self, request, pk):
         group_person_form = GroupPersonForm()
@@ -45,5 +69,20 @@ class GroupPersonAddView(TemplateView):
 
 
 class GroupDetailView(generic.DetailView):
-    model = Group
-    template_name = 'group/group_detail.html'
+
+    def get(self, request, pk):
+        group_detail_form = get_object_or_404(Group, id=pk)
+
+        # import ipdb
+        # ipdb.set_trace()
+
+        return render(request=request, template_name="group/group_detail.html",
+                      context={'group_detail_form': group_detail_form})
+
+
+class GroupPersonDelView(TemplateView):
+
+    def get(self, request, group_id, person_id):
+        related = GroupPerson.objects.filter(group_id=group_id, person_id=person_id)
+        related.delete()
+        return HttpResponseRedirect(reverse('group:group_detail', args=(group_id,)))

@@ -26,19 +26,35 @@
     <div align="center" class="wrapper">
 
 
-<h1>{{ group.name}}</h1>
+<h2>{{ group_detail_form.name}}</h2>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-{{ group.person }}
+{{ group_detail_form.person_id.name }}
 
-{% for person in group.person_set.all %}
-    {{ person.name }} {{ person.surname }}
+<!--get relations many to many field from one to other-->
+
+<table class="table">
+    {% if group_detail_form.groupperson_set.all %}
+        <tr class="bg-primary">
+            <th>Name and Surname</th>
+            <th>create date</th>
+            <th>Delete</th>
+        </tr>
+    {% endif %}
+
+{% for p in group_detail_form.groupperson_set.all %}
+        <tr>
+            <th>{{ p.person.name }} {{ p.person.surname }}</th>
+            <th>{{ p.data_join }}</th>
+            <th><a href="/group/group_person_del/{{ group_detail_form.id }}/{{ p.person.id }}">Del</a></th>
+        </tr>
 {% endfor %}
+</table>
 
 
-
-<p><a href="/group/group_person_add/{{ group.id }}">Dodaj</a> </p>
+<!--g = group_detail.groupperson_set.all()[0]-->
+<p><a href="/group/group_person_add/{{ group_detail_form.id }}">Dodaj</a> </p>
 
 </div>
 

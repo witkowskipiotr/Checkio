@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block title_page %} {{ title }} {% endblock %}
+
+{% block content %}
+
+
+<form action="" method="post" name="query" class="form horizontal well">
+    {% csrf_token %}
+    {{ group_form.as_p }}
+    <p>
+        <input type="submit" value="Zapisz" class="btn btn-inverse" name="submit">
+        <input type=button value="Anuluj" onClick="javascript:history.go(-1);" class="btn btn-inverse" name="anuluj">
+    </p>
+</form>
+
+{% endblock %}

@@ -5,11 +5,43 @@
 {% block title_page %} Group List {% endblock %}
 
 {% block content %}
-groups/group_detail
-<p><a href="/group/group_new">Dodaj</a> </p>
+
+<p><a href="/group/group_new">Add group</a> </p>
+
+<table class="table">
+    {% if groups %}
+        <tr class="bg-primary">
+            <th>id</th>
+            <th>Name</th>
+            <th>alias</th>
+            <th>secret code</th>
+            <th>edit</th>
+        </tr>
+    {% endif %}
+
 {% for group in groups %}
-    <p>{{ group.id }}. <a href="/group/group_detail/{{ group.id }}">
-        {{ group.name }}</a></p>
+        <tr>
+            <th>{{ group.id }}</th>
+            <th>{{ group.name }}</th>
+            <th>{{ group.alias }}</th>
+            <th>{{ group.secret_key }}</th>
+            <th>
+                <p><a href="/group/group_detail/{{ group.id }}">view</a></p>
+                <p><a href="/group/group_edit/{{ group.id }}">edit</a></p>
+
+            </th>
+        </tr>
 {% endfor %}
+</table>
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}

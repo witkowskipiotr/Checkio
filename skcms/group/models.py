@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 from address_book.models import Person
@@ -5,6 +6,8 @@ from address_book.models import Person
 
 class Group(models.Model):
     name = models.CharField(max_length=64)
+    alias = models.CharField(max_length=10, default='')
+    secret_key = models.CharField(max_length=25, null=True)
     person = models.ManyToManyField(to=Person, through='GroupPerson')
 
     def __str__(self):
@@ -12,8 +15,15 @@ class Group(models.Model):
 
 
 class GroupPerson(models.Model):
-    person = models.ForeignKey(to=Person, on_delete=models.CASCADE, primary_key=True)
-    group = models.ForeignKey(to=Group, on_delete=models.CASCADE, primary_key=True)
+    person = models.ForeignKey(to=Person, on_delete=models.CASCADE)
+    group = models.ForeignKey(to=Group, on_delete=models.CASCADE)
+    data_join = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.person.name
+
+    def save(self, *args, **kwargs):
+        related_exists = GroupPerson.objects.filter(group_id=self.group_id,
+                                                    person_id=self.person_id)
+        if not related_exists:
+            super(GroupPerson, self).save(*args, **kwargs)
