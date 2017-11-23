@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, permission_required
 from django.utils.deprecation import MiddlewareMixin
 from stronghold import conf, utils
 

@@ -16,31 +16,21 @@
     <body>
 
         <div class="row"><!--  PASEK GORA -->
-            <div class="topbar">
-                <div class="logo pull-left">
-                    <h1><a href="#"><img src="{% static 'img/pbkm.png' %}"></a> </h1>
-                </div>
-                <div class="topbar-login">
+            <div class="topbar" >
+                <ol class="breadcrumb">
+                  <li><a href="/accounts/login/"><img hspace="20" width="60" height="60" src="{% static 'img/pbkm.png' %}"></a></li>
+                  <li><a href="/address_book">List book</a></li>
+                  <li><a href="/group/">List Group</a></li>
+                  <li class="active"><a href="/address_book/persons_all">All persons</a></li>
+                    <div class="topbar-login">
                         {% if user.id %}
-                            <p class="active"><a href="/accounts/logout" class="text-primary">Log out ({{ user.username }})</a></p>
+                        <span style="color:purple" >Login: {{ user.username }}</span>
+                        <a href="/accounts/logout" class="text-primary">Log out</a>
                         {% else %}
-                            <p class="p-3 mb-2 bg-danger text-red"><a href="/accounts/login/">Log in</a> | <a href="/accounts/create_user">Sign up</a></p>
+                            <a href="/accounts/login/">Log in</a> | <a href="/accounts/create_user">Sign up</a>
                         {% endif %}
-
-                </div>
-            </div>
-        </div>
-
-        <div ><!-- Menu -->
-            <div id="mainmenu" class="navbar navbar-inverse">
-                    <div class="navbar-inner">
-                        <div>
-                            <ul class="nav">
-                                <li class="active"><a href="/address_book">List book</a></li>
-                                <!--<li><a href="/address_book">List book</a></li>-->
-                            </ul>
-                        </div>
                     </div>
+                </ol>
             </div>
         </div>
 
@@ -65,7 +55,7 @@
                         <li class="nav-header">Twoje konto</li>
                         {% if user.id %}
                             <li class="active"><a href="/accounts/profile/">Settings profile</a></li>
-                            <li><a href="">Powiadomienia</a></li>
+                            <li><a href="/notifications/index/">Powiadomienia</a></li>
                             <li><a href="/accounts/logout/">Logout ({{ user.username }})</a></li>
                         {% else %}
                             <li class="active"><a href="/accounts/login/">Log in</a></li>

@@ -5,6 +5,12 @@ from django.views.generic import TemplateView
 from .models import Notifications
 
 
+def index(request):
+    notification = Notifications.objects.filter(user=request.user)
+    ctx = {'notifications': notification}
+    return render(request=request, template_name="index.html",
+                  context=ctx)
+
 def show_notification(request, notification_id):
     notification = Notifications.objects.get(id=notification_id)
     ctx = {'notification': notification}

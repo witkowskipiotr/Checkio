@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'group',
     'user_profile',
     'notifications',
+    # 'permission',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'address_book.my_context_processor.my_cp',
             ],
+            # 'builtins': [
+            #     'permission.templatetags.permissionif'
+            # ],
         },
     },
 ]
@@ -141,3 +145,27 @@ STRONGHOLD_PUBLIC_URLS = (
     r'/accounts/create_user/',
     r'/accounts/auth/',
 )
+#
+# # permission
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend', # default
+#     'permission.backends.PermissionBackend',
+# )
+#
+# # # PERMISSION_CHECK_AUTHENTICATION_BACKENDS
+# # PERMISSION_CHECK_AUTHENTICATION_BACKENDS = []
+# # PERMISSION_REPLACE_BUILTIN_IF = []
+# # PERMISSION_CHECK_TEMPLATES_OPTIONS_BUILTINS = []
+# # TEMPLATES = ['persons.html',]
+#
+# # permission collaborators
+# PERMISSION_DEFAULT_COLLABORATORS_PERMISSION_LOGIC_FIELD_NAME = 'user'
+# PERMISSION_DEFAULT_COLLABORATORS_PERMISSION_LOGIC_ANY_PERMISSION = True
+# PERMISSION_DEFAULT_COLLABORATORS_PERMISSION_LOGIC_CHANGE_PERMISSION = True
+# PERMISSION_DEFAULT_COLLABORATORS_PERMISSION_LOGIC_DELETE_PERMISSION = False
+#
+# # permission user
+# PERMISSION_DEFAULT_APL_FIELD_NAME = 'user'
+# PERMISSION_DEFAULT_APL_ANY_PERMISSION = True
+# PERMISSION_DEFAULT_APL_CHANGE_PERMISSION = True
+# PERMISSION_DEFAULT_APL_DELETE_PERMISSION = False

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} Persons all {% endblock %}
+
+{% block title_page %} Persons all {% endblock %}
+
+{% block content %}
+
+{% for person in persons %}
+    <p>{{ person.id }}. <a href="/address_book/person/{{ person.pk }}">
+        {{ person.name }} {{ person.surname }}</a></p>
+{% endfor %}
+
+{% endblock %}

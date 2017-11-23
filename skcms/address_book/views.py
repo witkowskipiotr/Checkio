@@ -17,6 +17,15 @@ class PersonsView(TemplateView):
         return render(request=request, template_name="persons.html",
                       context={'persons': persons})
 
+class PersonsAllView(TemplateView):
+    def get(self, request):
+        try:
+            persons = Person.objects.all()
+        except:
+            persons = None
+        return render(request=request, template_name="persons_all.html",
+                      context={'persons': persons})
+
 
 class PersonView(TemplateView):
 

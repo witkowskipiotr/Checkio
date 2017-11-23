@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %} Group detail {% endblock %}
+
+{% block title_page %} Group detail {% endblock %}
+
+{% block content %}
+
+<style>.wrapper{width:100%;}
+.box{float:left; height:250px;}
+.box:nth-child(1){
+   width:25%;
+   <!--background-color:red;-->
+
+}
+.box:nth-child(2){
+   width:50%;
+  <!--background-color:green;-->
+}
+.box:nth-child(3){
+   width:25%;
+  <!--background-color:yellow;-->
+}
+</style>
+
+    <div align="center" class="wrapper">
+
+
+<h1>{{ group.name}}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{{ group.person }}
+
+{% for person in group.person_set.all %}
+    {{ person.name }} {{ person.surname }}
+{% endfor %}
+
+
+
+<p><a href="/group/group_person_add/{{ group.id }}">Dodaj</a> </p>
+
+</div>
+
+{% endblock %}

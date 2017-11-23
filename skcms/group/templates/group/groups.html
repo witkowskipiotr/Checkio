@@ -5,10 +5,10 @@
 {% block title_page %} Group List {% endblock %}
 
 {% block content %}
-
-<p><a href="/group/person_new">Dodaj</a> </p>
+groups/group_detail
+<p><a href="/group/group_new">Dodaj</a> </p>
 {% for group in groups %}
-    <p>{{ group.id }}. <a href="/address_book/person/{{ group.id }}">
+    <p>{{ group.id }}. <a href="/group/group_detail/{{ group.id }}">
         {{ group.name }}</a></p>
 {% endfor %}
 

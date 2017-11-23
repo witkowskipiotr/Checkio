@@ -1,5 +1,5 @@
 from django import forms
-from address_book.models import Group, GroupPerson
+from .models import Group, GroupPerson
 
 
 class GroupForm(forms.ModelForm):
@@ -11,4 +11,4 @@ class GroupForm(forms.ModelForm):
 class GroupPersonForm(forms.ModelForm):
     class Meta:
         model = GroupPerson
-        fields = ('person', 'group',)
+        fields = ('person', 'group' )#'person.name', 'person.surname', 'group', 'name')

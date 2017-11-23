@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} Notification {% endblock %}
+
+{% block title_page %} Notification {% endblock %}
+
+{% block content %}
+
+{% for notification in notifications %}
+
+    <p>{{ notification.content }}</p>
+    <p><a href="/notifications/delete/{{ notification.id }}">Make viewed</a> </p>
+
+{% endfor%}
+
+{% endblock %}

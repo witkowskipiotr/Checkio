@@ -48,17 +48,18 @@ class Person(models.Model):
 
     def __str__(self):
         return self.surname + ' ' + self.name
-
-
-class Group(models.Model):
-    name = models.CharField(max_length=64)
-    person = models.ManyToManyField(to=Person, through='GroupPerson')
-
-    def __str__(self):
-        return self.name
-
-
-class GroupPerson(models.Model):
-    id = models.IntegerField(primary_key=True, default=0, editable=False)
-    person = models.ForeignKey(to=Person, on_delete=models.CASCADE)
-    group = models.ForeignKey(to=Group, on_delete=models.CASCADE)
+#
+#     # this is just required for easy explanation
+#     class Meta:
+#         app_label = 'permission'
+#
+# # can add permission logic in this place or perms.py in app
+#
+# # apply AddressBookPermissionLogic to Person
+# from permission import add_permission_logic
+# from permission.logics import AuthorPermissionLogic, StaffPermissionLogic
+#
+# add_permission_logic(Person, AuthorPermissionLogic())
+# # add_permission_logic(Person, AuthorPermissionLogic(
+# #     field_name='user',
+# # ))

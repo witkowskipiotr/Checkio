@@ -17,13 +17,15 @@ from django.conf.urls import url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 
-urlpatterns = [
-    url(r'^group$', views.GroupView.as_view(), name="group"),
 
-    # url(r'^address_book/person/(?P<pk>(\d)+)$', views.PersonView.as_view(), name="person"),
-    # url(r'^address_book/person_edit/(?P<pk>(\d)+)$', views.PersonEditView.as_view(), name="person_edit"),
-    # url(r'^address_book/person_del/(?P<pk>(\d)+)$', views.PersonDelView.as_view(), name="person_del"),
-    # url(r'^address_book/person_new', views.PersonNewView.as_view(), name="person_new"),
+app_name = 'group'
+
+urlpatterns = [
+    url(r'^group/$', views.GroupsView.as_view(), name="groups"),
+    url(r'^group/group_new$', views.GroupNewView.as_view(), name="group_new"),
+    # ex: /group/group_detail/4
+    url(r'^group/group_detail/(?P<pk>[0-9]+)$', views.GroupDetailView.as_view(), name='detail'),
+    url(r'^group/group_person_add/(?P<pk>[0-9]+)$', views.GroupPersonAddView.as_view(), name='group_person'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
