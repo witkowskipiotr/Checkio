@@ -11,7 +11,8 @@ class Address(models.Model):
     number_flat = models.IntegerField(null=True)
 
     def __str__(self):
-        return self.city + ' ' + self.street
+        return self.city + ', ' + self.street + ' ' + self.number_house + '/' + self.number_flat
+
 
 class Phone(models.Model):
     TYPE_PHONE = (
@@ -20,6 +21,7 @@ class Phone(models.Model):
     )
     number_phone = models.CharField(max_length=30)
     type = models.IntegerField(choices=TYPE_PHONE)
+    person = models.ForeignKey(to='Person', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.number_phone
@@ -32,6 +34,7 @@ class Email(models.Model):
     )
     email = models.CharField(max_length=30, default="")
     type = models.IntegerField(choices=TYPE_EMAIL, default=1)
+    person = models.ForeignKey(to='Person', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.email
@@ -42,12 +45,13 @@ class Person(models.Model):
     surname = models.CharField(max_length=50)
     description = models.TextField()
     address = models.ForeignKey(to=Address, on_delete=models.CASCADE)
-    phone = models.ForeignKey(to=Phone, on_delete=None)
-    email = models.ForeignKey(to=Email, on_delete=None)
     user = models.ForeignKey(to=User, null=True)
 
     def __str__(self):
         return self.surname + ' ' + self.name
+
+
+
 #
 #     # this is just required for easy explanation
 #     class Meta:

@@ -15,19 +15,28 @@
             <th>Name</th>
             <th>alias</th>
             <th>secret code</th>
+            <th>Members</th>
             <th>edit</th>
         </tr>
     {% endif %}
 
 {% for group in groups %}
+
         <tr>
             <th>{{ group.id }}</th>
             <th>{{ group.name }}</th>
             <th>{{ group.alias }}</th>
             <th>{{ group.secret_key }}</th>
             <th>
+                {% for groupperson in group.groupperson_set.all%}
+                <p><a href="/address_book/person/{{ groupperson.person.id }}">{{ groupperson.person.surname }} {{ groupperson.person.name }}</a></p>
+                {% endfor %}
+                <!--{{ group.groupperson_set.all }}-->
+            </th>
+            <th>
                 <p><a href="/group/group_detail/{{ group.id }}">view</a></p>
                 <p><a href="/group/group_edit/{{ group.id }}">edit</a></p>
+                <p><a href="/group/group_del/{{ group.id }}">del</a></p>
 
             </th>
         </tr>

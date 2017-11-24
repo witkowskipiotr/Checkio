@@ -80,9 +80,21 @@ class GroupDetailView(generic.DetailView):
                       context={'group_detail_form': group_detail_form})
 
 
+class GroupDelView(generic.DetailView):
+
+    def get(self, request, pk):
+        try:
+            group = get_object_or_404(Group, id=pk)
+            group.delete()
+        except:
+            pass
+
+        return HttpResponseRedirect(reverse('group:groups'))
+
+
 class GroupPersonDelView(TemplateView):
 
     def get(self, request, group_id, person_id):
         related = GroupPerson.objects.filter(group_id=group_id, person_id=person_id)
         related.delete()
-        return HttpResponseRedirect(reverse('group:group_detail', args=(group_id,)))
+        return HttpResponseRedirect('group:group_detail', args=(group_id,))

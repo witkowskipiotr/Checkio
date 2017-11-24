@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^group/group_new$', views.GroupNewView.as_view(), name="group_new"),
     # ex: /group/group_detail/4
     url(r'^group/group_detail/(?P<pk>[0-9]+)$', views.GroupDetailView.as_view(), name='group_detail'),
+    url(r'^group/group_del/(?P<pk>[0-9]+)$', views.GroupDelView.as_view(), name='group_del'),
     url(r'^group/group_edit/(?P<id>[0-9]+)$', views.GroupEditView.as_view(), name='group_edit'),
     url(r'^group/group_person_add/(?P<pk>[0-9]+)$', views.GroupPersonAddView.as_view(), name='group_person'),
     url(r'^group/group_person_del/(?P<group_id>[0-9]+)/(?P<person_id>[0-9]+)$', views.GroupPersonDelView.as_view(), name='group_person_del'),

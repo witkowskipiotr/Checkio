@@ -14,17 +14,80 @@ class PersonsView(TemplateView):
             persons = Person.objects.filter(user=request.user).order_by('surname')
         except:
             persons = None
-        return render(request=request, template_name="persons.html",
-                      context={'persons': persons})
+        column_name = ['id', 'Name', 'Groups', 'Detail']
+        column_data = []
+        for person in persons:
+            group_list = []
+            for group in person.group_set.all():
+                group_link = '/group/group_detail/{}'.format(group.pk)
+                group_list.append(
+                    {'col': group.name,
+                     'link': group_link
+                     }
+                )
+
+            edit_list = [
+
+                {'col': 'View', 'link': '/address_book/person/{}'.format(person.pk)},
+                {'col': 'Edit', 'link': '/address_book/person_edit/{}'.format(person.pk)},
+                {'col': 'Delete', 'link': '/address_book/person_del/{}'.format(person.pk)},
+
+            ]
+
+            row = [
+                {'col': person.id},
+                {'col': person.name + '' + person.surname},
+                {'many_link': group_list},
+                {'many_link': edit_list},
+            ]
+            column_data.append(row)
+
+        ctx = {'title': 'Persons List ({})'.format(request.user),
+               'link_add': '/address_book/person_new',
+               'column_name': column_name,
+               'column_data': column_data
+               }
+        return render(request=request, template_name="forms.html",
+                      context=ctx)
 
 class PersonsAllView(TemplateView):
+
     def get(self, request):
+        column_name = []
+        column_data = []
         try:
             persons = Person.objects.all()
         except:
             persons = None
-        return render(request=request, template_name="persons_all.html",
-                      context={'persons': persons})
+
+        if persons:
+            column_name = [
+                'id',
+                'Name',
+                # 'View detail'
+            ]
+            for person in persons:
+                row = [
+                    {'col': person.id},
+                    {'col': person.name + '' + person.surname},
+                    # {'col': 'View', 'link': '/address_book/person/{}'.format(person.pk)},
+                ]
+                column_data.append(row)
+
+
+        ctx = {'title': 'Persons all List',
+               # 'link_add': '/address_book/person_new',
+               'column_name': column_name,
+               'column_data': column_data
+               }
+        return render(request=request, template_name="forms.html",
+                      context=ctx)
+
+
+
+
+        # return render(request=request, template_name="persons_all.html",
+        #               context={'persons': persons})
 
 
 class PersonView(TemplateView):
@@ -66,29 +129,18 @@ class PersonNewView(TemplateView):
     def get(self, request):
         person = PersonForm()
         address = AddressForm()
-        phone = PhoneForm()
-        email = EmailForm()
 
         ctx = {"form_person": person, "form_address": address,
-               "form_phone": phone, "form_email": email,
                "title": "Person"}
         return TemplateResponse(request, 'person_new.html', ctx)
 
     def post(self, request):
         person_form = PersonForm(request.POST)
         address_form = AddressForm(request.POST)
-        phone_form = PhoneForm(request.POST)
-        email_form = EmailForm(request.POST)
-        if person_form.is_valid() and address_form.is_valid() and \
-                phone_form.is_valid() and email_form.is_valid():
+        if person_form.is_valid() and address_form.is_valid():
             address = address_form.save(commit=True)
-            phone = phone_form.save(commit=True)
-            email = email_form.save(commit=True)
-
             person = person_form.save(commit=False)
             person.address_id = address.id
-            person.phone_id = phone.id
-            person.email_id = email.id
             person.user = request.user
             person.save()
             return redirect('person', id=person.id)
@@ -147,19 +199,19 @@ class PersonDelView(TemplateView):
         if id:
             person = get_object_or_404(Person, id=id)
             # address = person.address
-
-            address = get_object_or_404(Address, id=person.address_id)
-            phone = get_object_or_404(Phone, id=person.phone_id)
-            email = get_object_or_404(Email, id=person.email_id)
-
-            if address:
-                address.delete()
-            if phone:
-                phone.delete()
-            if email:
-                email.delete()
+            #
+            # address = get_object_or_404(Address, id=person.address_id)
+            # phone = get_object_or_404(Phone, id=person.phone_id)
+            # email = get_object_or_404(Email, id=person.email_id)
+            #
+            # if address:
+            #     address.delete()
+            # if phone:
+            #     phone.delete()
+            # if email:
+            #     email.delete()
             if person:
                 person.delete()
 
-        return redirect('persons')
+        return redirect('persons_list')
 

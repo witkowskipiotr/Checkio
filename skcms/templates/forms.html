@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+{% block title_page %} {{ title }} {% endblock %}
+{% block content %}
+
+    <style>.wrapper{width:100%;}
+    .box{float:left; height:250px;}
+    .box:nth-child(1){
+       width:25%;
+       <!--background-color:red;-->
+    }
+    .box:nth-child(2){
+       width:50%;
+      <!--background-color:green;-->
+    }
+    .box:nth-child(3){
+       width:25%;
+      <!--background-color:yellow;-->
+    }
+    </style>
+
+    {% if link_add %}
+        <p align="left"><a href="{{ link_add }}">Dodaj</a> </p>
+    {% endif %}
+
+<div align="center" class="wrapper">
+
+    <!--add column name to table-->
+    {% block table %}
+    <table class="table">
+        <tr class="bg-primary">
+        {% for name in column_name %}
+            <th>{{ name }}</th>
+        {% endfor %}
+        </tr>
+
+    <!--add data to table -->
+        {% for data in column_data %}
+            <tr>
+                {% for row in data %}
+                    {% if row.link %}
+                        <th><a href="{{ row.link }}">{{ row.col }}</a></th>
+                    {% elif row.many_link %}
+                        <th>
+                        {% for row in row.many_link %}
+                            <p><a href="{{ row.link }}">{{ row.col }}</a></p>
+                        {% endfor %}
+                        </th>
+
+
+                    {% else %}
+                        <th>{{ row.col }}</th>
+
+                    {% endif %}
+
+
+
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+    </table>
+    {% endblock %}
+</div>
+
+{% endblock %}

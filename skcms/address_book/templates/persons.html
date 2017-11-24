@@ -1,15 +1,1 @@
-{% extends "base.html" %}
-
-{% block title %} Persons List {% endblock %}
-
-{% block title_page %} Persons List {% endblock %}
-
-{% block content %}
-
-<p><a href="/address_book/person_new">Dodaj</a> </p>
-{% for person in persons %}
-    <p>{{ person.id }}. <a href="/address_book/person/{{ person.pk }}">
-        {{ person.name }} {{ person.surname }}</a></p>
-{% endfor %}
-
-{% endblock %}
+{% extends "forms.html" %}

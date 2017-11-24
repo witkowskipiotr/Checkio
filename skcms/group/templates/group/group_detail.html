@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %} Group detail {% endblock %}
+{% block title %} Group detail: {{ group_detail_form.name }} {% endblock %}
 
-{% block title_page %} Group detail {% endblock %}
+{% block title_page %} Group detail: {{ group_detail_form.name }} {% endblock %}
 
 {% block content %}
 
@@ -23,16 +23,10 @@
 }
 </style>
 
-    <div align="center" class="wrapper">
+<div align="center" class="wrapper">
 
 
-<h2>{{ group_detail_form.name}}</h2>
-
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-{{ group_detail_form.person_id.name }}
-
-<!--get relations many to many field from one to other-->
+<p align="left"><a href="/group/group_person_add/{{ group_detail_form.id }}" >Dodaj</a> </p>
 
 <table class="table">
     {% if group_detail_form.groupperson_set.all %}
@@ -51,10 +45,6 @@
         </tr>
 {% endfor %}
 </table>
-
-
-<!--g = group_detail.groupperson_set.all()[0]-->
-<p><a href="/group/group_person_add/{{ group_detail_form.id }}">Dodaj</a> </p>
 
 </div>
 
