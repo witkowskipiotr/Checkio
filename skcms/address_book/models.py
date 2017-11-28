@@ -7,11 +7,20 @@ from django.dispatch import receiver
 class Address(models.Model):
     city = models.CharField(max_length=50)
     street = models.CharField(max_length=50)
-    number_house = models.IntegerField()
-    number_flat = models.IntegerField(null=True)
+    number_house = models.IntegerField(verbose_name='Number')
+    number_flat = models.IntegerField(null=True, verbose_name='Flat')
+
+    class Meta:
+        default_permissions = ()
+        select_on_save = True
+
+
+
+    def get_absolute_url(self):
+        return '/address_book/person/%d' % self.pk
 
     def __str__(self):
-        return self.city + ', ' + self.street + ' ' + self.number_house + '/' + self.number_flat
+        return self.city + ', ' + self.street + ' ' + str(self.number_house) + '/' + str(self.number_flat)
 
 
 class Phone(models.Model):
@@ -22,6 +31,9 @@ class Phone(models.Model):
     number_phone = models.CharField(max_length=30)
     type = models.IntegerField(choices=TYPE_PHONE)
     person = models.ForeignKey(to='Person', on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return '/address_book/person/%d' % self.pk
 
     def __str__(self):
         return self.number_phone
@@ -36,6 +48,9 @@ class Email(models.Model):
     type = models.IntegerField(choices=TYPE_EMAIL, default=1)
     person = models.ForeignKey(to='Person', on_delete=models.CASCADE)
 
+    def get_absolute_url(self):
+        return '/address_book/person/%d' % self.pk
+
     def __str__(self):
         return self.email
 
@@ -46,6 +61,15 @@ class Person(models.Model):
     description = models.TextField()
     address = models.ForeignKey(to=Address, on_delete=models.CASCADE)
     user = models.ForeignKey(to=User, null=True)
+
+    class Meta:
+        ordering = ['surname', '-name']
+        permissions = (
+            ("view_person", "Can view person"),
+        )
+
+    def get_absolute_url(self):
+        return '/address_book/person/%d' % self.pk
 
     def __str__(self):
         return self.surname + ' ' + self.name

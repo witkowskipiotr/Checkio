@@ -1,0 +1,5 @@
+{% for group in record.group_set.all %}
+<p>
+    <a href="/group/group_detail/{{ group.id }}">{{ group.name }}</a>
+</p>
+{% endfor %}

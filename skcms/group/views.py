@@ -4,20 +4,27 @@ from django.template.response import TemplateResponse
 from django.urls import reverse
 from django.views import generic
 from django.views.generic import TemplateView
+from django_tables2 import RequestConfig
 
+from .tables import ListGroupTable
 from .forms import GroupForm, GroupPersonForm
 from .models import Group, GroupPerson, Person
 
 
 class GroupsView(TemplateView):
-    def get(self, request):
-        groups = Group.objects.all().order_by('name')
-        return render(request=request, template_name="group/groups.html",
-                      context={'groups': groups})
+
+    def get(self, request, *args, **kwargs):
+        table = ListGroupTable(Group.objects.all(), order_by='-name')
+        RequestConfig(request, paginate={'per_page': 10}).configure(table)
+
+        return render(request, 'template_list.html', {
+            'table': table, 'title': 'List Group', 'link_add': 'group_new'
+        })
 
 
 class GroupNewView(TemplateView):
-    def get(self, request):
+
+    def get(self, request, *args, **kwargs):
         group = GroupForm()
         ctx = {"form_group": group, "title": "Group"}
         return TemplateResponse(request, 'group/group_new.html', ctx)
@@ -31,7 +38,7 @@ class GroupNewView(TemplateView):
 
 class GroupEditView(TemplateView):
 
-    def get(self, request, id):
+    def get(self, request, id,):
         if id:
             instance_group = get_object_or_404(Group, id=id)
 
@@ -56,7 +63,10 @@ class GroupEditView(TemplateView):
 class GroupPersonAddView(TemplateView):
     def get(self, request, pk):
         group_person_form = GroupPersonForm()
-        ctx = {"group_person_form": group_person_form, "title": "Add Person to group " + str(pk)}
+        ctx = {
+            "group_person_form": group_person_form,
+            "title": "Add Person to group " + str(pk)
+        }
         return TemplateResponse(request, 'group/group_person.html', ctx)
 
     def post(self, request, pk):

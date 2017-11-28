@@ -3,13 +3,89 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
+from django_filters.views import FilterView
+from django_tables2 import RequestConfig
+from django_tables2 import SingleTableMixin
 
 from .forms import AddressForm, PersonForm, PhoneForm, EmailForm
 from .models import Address, Person, Email, Phone
+from group.models import GroupPerson, Group
+
+from .tables import ListBookTable
+from django_tables2 import MultiTableMixin
+
+from django.contrib.auth.models import Group
+from django.shortcuts import render_to_response, get_object_or_404
+from django.views.generic import ListView
+from django.template import RequestContext
+from guardian.decorators import permission_required_or_403, permission_required
+from guardian.compat import get_user_model
+
+
+
+
+
+#
+# class Test(MultiTableMixin, TemplateView):
+#
+#     def get(self, request, *args, **kwargs):
+#         # tables = PersonTable(Person.objects.all())
+#
+#         tables = [
+#             Person(Person.objects.all().order_by('surname'),
+#                    exclude=('address',)),
+#             Person(Person.objects.all().order_by('surname'),
+#                    exclude=('address', 'user',))
+#         ]
+#
+#         ctx = {'tables': tables}
+#         return render(request, 'people.html', ctx)
+
+
+#
+# def semantic(request):
+#     '''Demonstrate the use of the Semantic UI template'''
+#
+#     table = ListBookTable(Person.objects.all(), order_by='-name')
+#     RequestConfig(request, paginate={'per_page': 10}).configure(table)
+#
+#     return render(request, 'semantic_template_table.html', {
+#         'table': table,
+#     })
+
+#
+class ListBookView(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        table = ListBookTable(Person.objects.filter(user=request.user), order_by='-name')
+        RequestConfig(request, paginate={'per_page': 10}).configure(table)
+
+        return render(request, 'template_list.html', {
+            'table': table, 'title': 'List Persons', 'link_add': 'person_new'
+        })
+
+
+# list_book = permission_required('address_book.view_person', return_403=True)(ListBookView.as_view())
+
+@permission_required('address_book.view_person', return_403=True)
+def list_book(request):
+    table = ListBookTable(Person.objects.filter(user=request.user), order_by='-name')
+    RequestConfig(request, paginate={'per_page': 10}).configure(table)
+
+    return render(request, 'template_list.html', {
+        'table': table, 'title': 'List Persons', 'link_add': 'person_new'
+    })
+
+
+
+
 
 
 class PersonsView(TemplateView):
     def get(self, request):
+
+
+
         try:
             persons = Person.objects.filter(user=request.user).order_by('surname')
         except:
@@ -49,6 +125,7 @@ class PersonsView(TemplateView):
                }
         return render(request=request, template_name="forms.html",
                       context=ctx)
+
 
 class PersonsAllView(TemplateView):
 
@@ -152,16 +229,11 @@ class PersonEditView(TemplateView):
         if id:
             instance_person = get_object_or_404(Person, id=id)
             instance_address = get_object_or_404(Address, id=instance_person.address_id)
-            instance_phone = get_object_or_404(Phone, id=instance_person.phone_id)
-            instance_email = get_object_or_404(Email, id=instance_person.email_id)
 
             person = PersonForm(request.POST or None, instance=instance_person)
             address = AddressForm(request.POST or None, instance=instance_address)
-            phone = PhoneForm(request.POST or None, instance=instance_phone)
-            email = EmailForm(request.POST or None, instance=instance_email)
 
             ctx = {"form_person": person, "form_address": address,
-                   "form_phone": phone, "form_email": email,
                    "title": "Person", "id": id}
 
             return TemplateResponse(request, 'person_edit.html', ctx)
@@ -169,25 +241,15 @@ class PersonEditView(TemplateView):
     def post(self, request, id):
         instance_person = get_object_or_404(Person, id=id)
         instance_address = get_object_or_404(Address, id=instance_person.address_id)
-        instance_phone = get_object_or_404(Phone, id=instance_person.phone_id)
-        instance_email = get_object_or_404(Email, id=instance_person.email_id)
 
         person_form = PersonForm(request.POST or None, instance=instance_person)
         address_form = AddressForm(request.POST or None, instance=instance_address)
-        phone_form = PhoneForm(request.POST or None, instance=instance_phone)
-        email_form = EmailForm(request.POST or None, instance=instance_email)
 
         if address_form.is_valid():
             address = address_form.save(commit=True)
-        if phone_form.is_valid():
-            phone = phone_form.save(commit=True)
-        if email_form.is_valid():
-            email = email_form.save(commit=True)
         if person_form.is_valid():
             person = person_form.save(commit=False)
             person.address_id = address.id
-            person.phone_id = phone.id
-            person.email_id = email.id
             person.save()
             return redirect('person', id=person.id)
 

@@ -1,0 +1,5 @@
+{
+  "omaha/tests/test_omaha.py": true,
+  "tests/2017_11_06/test_password_strength.py::CheckAnagramsWordTest::test_characters_not_allowed_password": true,
+  "tests/code_2017_11_08/test_simple_areas.py::SimpleAreasTest::test_circle_areas": true
+}

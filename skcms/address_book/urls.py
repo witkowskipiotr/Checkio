@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from . import views
 from django.contrib import admin
+from guardian.compat import url
 
 # import permission
 
@@ -26,6 +27,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^address_book$', views.PersonsView.as_view(), name="persons_list"),
+    url(r'^address_book/index$', views.list_book, name="index"),
     url(r'^address_book/persons_all/$', views.PersonsAllView.as_view(), name="persons_all"),
     url(r'^address_book/person/(?P<id>(\d)+)$', views.PersonView.as_view(), name="person"),
     url(r'^address_book/person_edit/(?P<id>(\d)+)$', views.PersonEditView.as_view(), name="person_edit"),

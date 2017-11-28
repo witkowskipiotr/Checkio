@@ -4,14 +4,14 @@
     <head>
         <meta charset="utf-8">
 
-        {% block head %}
-            <!--<link rel="stylesheet" href="style.css" />-->
-            <title>{% block title %} Tytuł strony {% endblock %} | My Webpage</title>
-        {% endblock %}
+        <title>{{ title }} | My Webpage</title>
 
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-responsive.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+        {% block head %}
+        {% endblock %}
     </head>
     <body>
 
@@ -19,6 +19,7 @@
             <div class="topbar" >
                 <ol class="breadcrumb">
                   <li><a href="/accounts/login/"><img hspace="20" width="60" height="60" src="{% static 'img/pbkm.png' %}"></a></li>
+                  <li><a href="/address_book/index">List book index</a></li>
                   <li><a href="/address_book">List book</a></li>
                   <li><a href="/group/">List Group</a></li>
                   <li class="active"><a href="/address_book/persons_all">All persons</a></li>
@@ -38,7 +39,7 @@
         <div class="row"><!-- Glowna czesc -->
             <div class="col-md-8"><!-- Lewa kolumna -->
                 <div>
-                    <H1 align="center">{% block title_page %} Tytuł {% endblock %}</H1>
+                    <H1 align="center">{{ title }}</H1>
                 </div>
                 <div id="content" class="container">
                     {% block content %}

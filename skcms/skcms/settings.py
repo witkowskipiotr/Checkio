@@ -38,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_tables2',
+    'guardian',
     'address_book',
     'group',
     'user_profile',
     'notifications',
-    # 'permission',
 ]
 
 MIDDLEWARE = [
@@ -144,28 +145,14 @@ LOGIN_URL = '/accounts/login/'
 STRONGHOLD_PUBLIC_URLS = (
     r'/accounts/create_user/',
     r'/accounts/auth/',
+    r'/admin/',
 )
-#
-# # permission
-# AUTHENTICATION_BACKENDS = (
-#     'django.contrib.auth.backends.ModelBackend', # default
-#     'permission.backends.PermissionBackend',
-# )
-#
-# # # PERMISSION_CHECK_AUTHENTICATION_BACKENDS
-# # PERMISSION_CHECK_AUTHENTICATION_BACKENDS = []
-# # PERMISSION_REPLACE_BUILTIN_IF = []
-# # PERMISSION_CHECK_TEMPLATES_OPTIONS_BUILTINS = []
-# # TEMPLATES = ['persons.html',]
-#
-# # permission collaborators
-# PERMISSION_DEFAULT_COLLABORATORS_PERMISSION_LOGIC_FIELD_NAME = 'user'
-# PERMISSION_DEFAULT_COLLABORATORS_PERMISSION_LOGIC_ANY_PERMISSION = True
-# PERMISSION_DEFAULT_COLLABORATORS_PERMISSION_LOGIC_CHANGE_PERMISSION = True
-# PERMISSION_DEFAULT_COLLABORATORS_PERMISSION_LOGIC_DELETE_PERMISSION = False
-#
-# # permission user
-# PERMISSION_DEFAULT_APL_FIELD_NAME = 'user'
-# PERMISSION_DEFAULT_APL_ANY_PERMISSION = True
-# PERMISSION_DEFAULT_APL_CHANGE_PERMISSION = True
-# PERMISSION_DEFAULT_APL_DELETE_PERMISSION = False
+
+
+# # permission - guardian
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
+)
+
+GUARDIAN_RAISE_403 = True
