@@ -22,38 +22,6 @@ from guardian.decorators import permission_required_or_403, permission_required
 from guardian.compat import get_user_model
 
 
-
-
-
-#
-# class Test(MultiTableMixin, TemplateView):
-#
-#     def get(self, request, *args, **kwargs):
-#         # tables = PersonTable(Person.objects.all())
-#
-#         tables = [
-#             Person(Person.objects.all().order_by('surname'),
-#                    exclude=('address',)),
-#             Person(Person.objects.all().order_by('surname'),
-#                    exclude=('address', 'user',))
-#         ]
-#
-#         ctx = {'tables': tables}
-#         return render(request, 'people.html', ctx)
-
-
-#
-# def semantic(request):
-#     '''Demonstrate the use of the Semantic UI template'''
-#
-#     table = ListBookTable(Person.objects.all(), order_by='-name')
-#     RequestConfig(request, paginate={'per_page': 10}).configure(table)
-#
-#     return render(request, 'semantic_template_table.html', {
-#         'table': table,
-#     })
-
-#
 class ListBookView(TemplateView):
 
     def get(self, request, *args, **kwargs):
@@ -64,17 +32,17 @@ class ListBookView(TemplateView):
             'table': table, 'title': 'List Persons', 'link_add': 'person_new'
         })
 
+list_book = permission_required('address_book.view_person', return_403=True)(ListBookView.as_view())
 
-# list_book = permission_required('address_book.view_person', return_403=True)(ListBookView.as_view())
 
-@permission_required('address_book.view_person', return_403=True)
-def list_book(request):
-    table = ListBookTable(Person.objects.filter(user=request.user), order_by='-name')
-    RequestConfig(request, paginate={'per_page': 10}).configure(table)
-
-    return render(request, 'template_list.html', {
-        'table': table, 'title': 'List Persons', 'link_add': 'person_new'
-    })
+# @permission_required('address_book.view_person', return_403=True)
+# def list_book(request):
+#     table = ListBookTable(Person.objects.filter(user=request.user), order_by='-name')
+#     RequestConfig(request, paginate={'per_page': 10}).configure(table)
+#
+#     return render(request, 'template_list.html', {
+#         'table': table, 'title': 'List Persons', 'link_add': 'person_new'
+#     })
 
 
 

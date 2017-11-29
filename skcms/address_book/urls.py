@@ -26,7 +26,7 @@ from guardian.compat import url
 
 
 urlpatterns = [
-    url(r'^address_book$', views.PersonsView.as_view(), name="persons_list"),
+    url(r'^index', views.PersonsView.as_view(), name="persons_list"),
     url(r'^address_book/index$', views.list_book, name="index"),
     url(r'^address_book/persons_all/$', views.PersonsAllView.as_view(), name="persons_all"),
     url(r'^address_book/person/(?P<id>(\d)+)$', views.PersonView.as_view(), name="person"),

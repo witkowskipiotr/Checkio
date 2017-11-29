@@ -1,12 +1,20 @@
 from django.contrib import auth
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UsernameField
 from django.shortcuts import render, redirect
 from django.template.response import TemplateResponse
-
 from notifications.models import Notifications
+from django.contrib.auth import get_user_model
+
 
 # from .forms import AddressForm, PersonForm, PhoneForm, EmailForm
 # from .models import Address, Person, Email, Phone
+
+# change model in creation form
+class MyUserCreationForm(UserCreationForm):
+    class Meta:
+        model = get_user_model()
+        fields = ("username",)
+        field_classes = {'username': UsernameField}
 
 
 def login_view(request):
@@ -44,12 +52,12 @@ def invalid_login_view(request):
 
 def create_user_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = MyUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect(to='/accounts/create_user_success')
 
-    ctx = {'forms': UserCreationForm()}
+    ctx = {'forms': MyUserCreationForm()}
     return render(request=request, template_name="create_user.html", context=ctx)
 
 
