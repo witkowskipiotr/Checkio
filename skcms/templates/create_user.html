@@ -1,18 +1,33 @@
 {% extends "base.html" %}
+{% block javascript %}
+  <script>
+    $("#id_username").change(function () {
+      var username = $(this).val();
 
-{% block title %} Create user {% endblock %}
+      $.ajax({
+        url: '/ajax/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("A user with this username already exists.");
+          }
+        }
+      });
 
-{% block title_page %} Create user {% endblock %}
+    });
+  </script>
+{% endblock %}
 
 {% block content %}
+    <form action="/accounts/create_user/" method="post" class="form horizontal well">
+        {% csrf_token %}
 
-<form action="/accounts/create_user/" method="post" class="form horizontal well">
-    {% csrf_token %}
+        {{ forms.as_p }}
+        <br>
+        <input type="submit" class="btn btn-inverse" value="create">
 
-    {{ forms }}
-    <br>
-    <input type="submit" class="btn btn-inverse" value="create">
-
-</form>
-
+    </form>
 {% endblock %}

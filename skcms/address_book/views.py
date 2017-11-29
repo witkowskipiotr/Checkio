@@ -1,59 +1,41 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect
 from django.template.response import TemplateResponse
 from django.views.generic import TemplateView
-from django.contrib.auth.models import User
-from django_filters.views import FilterView
 from django_tables2 import RequestConfig
-from django_tables2 import SingleTableMixin
+from guardian.decorators import permission_required
 
 from .forms import AddressForm, PersonForm, PhoneForm, EmailForm
 from .models import Address, Person, Email, Phone
-from group.models import GroupPerson, Group
-
 from .tables import ListBookTable
-from django_tables2 import MultiTableMixin
 
-from django.contrib.auth.models import Group
-from django.shortcuts import render_to_response, get_object_or_404
-from django.views.generic import ListView
-from django.template import RequestContext
-from guardian.decorators import permission_required_or_403, permission_required
-from guardian.compat import get_user_model
-
-
-class ListBookView(TemplateView):
-
-    def get(self, request, *args, **kwargs):
-        table = ListBookTable(Person.objects.filter(user=request.user), order_by='-name')
-        RequestConfig(request, paginate={'per_page': 10}).configure(table)
-
-        return render(request, 'template_list.html', {
-            'table': table, 'title': 'List Persons', 'link_add': 'person_new'
-        })
-
-list_book = permission_required('address_book.view_person', return_403=True)(ListBookView.as_view())
-
-
-# @permission_required('address_book.view_person', return_403=True)
-# def list_book(request):
-#     table = ListBookTable(Person.objects.filter(user=request.user), order_by='-name')
-#     RequestConfig(request, paginate={'per_page': 10}).configure(table)
 #
-#     return render(request, 'template_list.html', {
-#         'table': table, 'title': 'List Persons', 'link_add': 'person_new'
-#     })
+# class ListBookView(TemplateView):
+#
+#     def get(self, request, *args, **kwargs):
+#         table = ListBookTable(Person.objects.filter(user=request.user), order_by='-name')
+#         RequestConfig(request, paginate={'per_page': 10}).configure(table)
+#
+#         return render(request, 'template_list.html', {
+#             'table': table, 'title': 'List Persons', 'link_add': 'person_new'
+#         })
+#
+# list_book = permission_required('address_book.view_person', return_403=True)(ListBookView.as_view())
 
+# second method to list book view
+@permission_required('address_book.view_person', return_403=True)
+def list_book(request):
+    table = ListBookTable(Person.objects.filter(user=request.user), order_by='-name')
+    RequestConfig(request, paginate={'per_page': 10}).configure(table)
 
-
+    return render(request, 'template_list.html', {
+        'table': table, 'title': 'List Persons', 'link_add': 'person_new'
+    })
 
 
 
 class PersonsView(TemplateView):
     def get(self, request):
-
-
-
         try:
             persons = Person.objects.filter(user=request.user).order_by('surname')
         except:

@@ -14,9 +14,9 @@ from django_tables2.utils import A, Accessor
 
 
 class ListBookTable(tables.Table):
-    address = tables.RelatedLinkColumn()
-    user = tables.RelatedLinkColumn()
-
+    # address = tables.RelatedLinkColumn()
+    # user = tables.RelatedLinkColumn()
+    user_id = tables.Column('User id', accessor='user.id')
     names = tables.LinkColumn(
         'person', args=[A('pk')],
         text=lambda record: record.name.capitalize() + ' ' + record.surname.capitalize(),
@@ -40,8 +40,9 @@ class ListBookTable(tables.Table):
         model = Person
         template = 'django_tables2/bootstrap.html'
         attrs = {'class': 'table table-bordered table-striped table-hover'}
-        exclude = ('address', 'user', 'name', 'surname')
-        sequence = ('id', 'names', 'description', 'user_name_created')
+        # exclude = ('address', 'name', 'surname')
+        fields = ('id', 'names', 'user_id', 'groups')
+        # sequence = ('id', 'names', 'description', 'user_name_created')
 
 
 #

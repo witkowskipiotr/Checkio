@@ -2,7 +2,7 @@ from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, UsernameField
 from django.shortcuts import render, redirect
 from django.template.response import TemplateResponse
-from notifications.models import Notifications
+from notifications.models import Notifications, User
 from django.contrib.auth import get_user_model
 
 
@@ -57,9 +57,10 @@ def create_user_view(request):
             form.save()
             return redirect(to='/accounts/create_user_success')
 
-    ctx = {'forms': MyUserCreationForm()}
+    ctx = {'forms': MyUserCreationForm(), 'title': 'Create User'}
     return render(request=request, template_name="create_user.html", context=ctx)
 
 
 def create_user_success_view(request):
-    return render(request=request, template_name='create_user_success.html')
+    ctx = {'title': 'User create success'}
+    return render(request=request, template_name='base.html', context=ctx)

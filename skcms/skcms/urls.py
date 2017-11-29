@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('address_book.urls')),
     url(r'', include('group.urls')),
+    url(r'', include('skcms.ajax.urls')),
     url(r'^accounts/', include('user_profile.urls')),
     url(r'^notifications/', include('notifications.urls')),
 
