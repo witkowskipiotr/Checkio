@@ -1,5 +1,6 @@
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, UsernameField
+from django.core.serializers import json
 from django.shortcuts import render, redirect
 from django.template.response import TemplateResponse
 from notifications.models import Notifications, User
@@ -58,7 +59,19 @@ def create_user_view(request):
             return redirect(to='/accounts/create_user_success')
 
     ctx = {'forms': MyUserCreationForm(), 'title': 'Create User'}
-    return render(request=request, template_name="create_user.html", context=ctx)
+
+    # return render(request=request, template_name="create_user.html",
+    #               context=ctx)
+    from django.http import HttpResponse
+    # return HttpResponse(
+    #     ctx=json.dumps(ctx),
+    #     content_type="application/json",
+    #     template_name="create_user.html"
+    # )
+
+
+    return render(request=request, template_name="create_user.html",
+                  context=ctx)
 
 
 def create_user_success_view(request):

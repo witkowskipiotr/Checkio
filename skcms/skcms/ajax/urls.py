@@ -19,6 +19,7 @@ from . import views
 
 urlpatterns = [
     url(r'^ajax/validate_username/$', views.validate_username, name='validate_username'),
+    url(r'^ajax/person_new/name/$', views.autocomplete_name, name='autocomplete_name'),
+    url(r'^ajax/lookup/(?P<table_lookups>\S+)/$', views.autocomplete_lookup, name='autocomplete_lookup'),
 
 ]
-

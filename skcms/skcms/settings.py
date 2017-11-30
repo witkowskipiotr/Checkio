@@ -152,6 +152,7 @@ STRONGHOLD_PUBLIC_URLS = (
     r'/accounts/create_user/',
     r'/accounts/auth/',
     r'/admin/',
+    r'/ajax/',
 )
 
 # guardian permission required

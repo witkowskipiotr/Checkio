@@ -1,24 +1,38 @@
 {% extends "base.html" %}
 {% block javascript %}
-  <script>
+
+<script>
+
+$(document).ready(function(){
     $("#id_username").change(function () {
-      var username = $(this).val();
+        var form = $(this).closest("form");
 
-      $.ajax({
-        url: '/ajax/validate_username/',
-        data: {
-          'username': username
-        },
-        dataType: 'json',
-        success: function (data) {
-          if (data.is_taken) {
-            alert("A user with this username already exists.");
+        $.ajax({
+          url: '/ajax/validate_username/',
+          data: form.serialize(),
+          dataType: 'json',
+
+          success: function (data) {
+            if (data.is_taken) {
+              alert(data.error_message);
+              $('#error').text( data.error_message );
+            }
+            else {
+              $('#error').text('');
+            }
           }
-        }
-      });
-
+        });
     });
-  </script>
+});
+
+
+
+
+
+
+
+</script>
+
 {% endblock %}
 
 {% block content %}
@@ -30,4 +44,5 @@
         <input type="submit" class="btn btn-inverse" value="create">
 
     </form>
+    <div id="error" style="color:red;"></div>
 {% endblock %}
